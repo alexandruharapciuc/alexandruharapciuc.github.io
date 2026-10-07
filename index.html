@@ -3,48 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofoliu - Alexandru Harapciuc</title>
+    <title>Alexandru Harapciuc | Inginer Proiectant</title>
+    <!-- Fonturi moderne -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconițe -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Biblioteca de animații (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 40px auto; 
-            max-width: 800px; 
-            line-height: 1.6; 
-            color: #333; 
-            padding: 20px; 
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-blue: #58a6ff;
+            --accent-cyan: #39d353;
+            --accent-orange: #ff7b72;
+            --text-main: #c9d1d9;
+            --text-bright: #f0f6fc;
         }
-        h1 { 
-            color: #2c3e50; 
-            border-bottom: 2px solid #2980b9; 
-            padding-bottom: 10px; 
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
         }
-        .project-card { 
-            background: #f8f9fa; 
-            padding: 20px; 
-            border-radius: 8px; 
-            margin-top: 20px; 
-            border-left: 5px solid #2980b9; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Navigație */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            background: radial-gradient(circle at 80% 30%, rgba(56, 139, 253, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(57, 211, 83, 0.05) 0%, transparent 40%);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--text-bright);
+            margin-bottom: 10px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #8b949e;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #0d1117;
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--text-main);
+            color: var(--text-bright);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Secțiuni comune */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-bright);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50%;
+            height: 4px;
+            background: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        /* Gridul de Proiecte */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(88, 166, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card h3 {
+            font-size: 1.35rem;
+            color: var(--text-bright);
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #8b949e;
+        }
+
+        /* Etichete tehnologii */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag.secondary {
+            background: rgba(57, 211, 83, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: gap 0.3s;
+        }
+
+        .view-btn:hover {
+            gap: 12px;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-color) 0%, rgba(13, 17, 23, 0.5) 100%);
+            border-radius: 16px;
+            padding: 60px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-email {
+            font-size: 1.8rem;
+            color: var(--text-bright);
+            margin: 20px 0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .contact-email:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--text-main);
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: var(--accent-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #8b949e;
         }
     </style>
 </head>
 <body>
-    <h1>Alexandru Harapciuc</h1>
-    <h2>Inginer Proiectant</h2>
-    <p>Salut! Acesta este portofoliul meu online, unde voi prezenta proiectele mele realizate pe parcursul licenței și masterului.</p>
 
-    <div class="project-card">
-        <h3>Proiectare Infrastructură</h3>
-        <p>Expertiză tehnică în soluții pentru infrastructura rutieră. Portofoliul include planșe și profile pentru:</p>
-        <ul>
-            <li>Autostrăzi urbane și modelarea fluxurilor de trafic</li>
-            <li>Proiectare și dimensionare drumuri și străzi</li>
-            <li>Detalii de execuție specifice (borduri, sisteme de scurgere a apelor, amenajări)</li>
+    <header>
+        <div class="logo">Alexandru Harapciuc</div>
+        <ul class="nav-links">
+            <li><a href="#acasa">Acasă</a></li>
+            <li><a href="#proiecte">Proiecte</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-    </div>
+    </header>
 
-    <p style="margin-top: 40px; font-size: 0.9em; color: #7f8c8d;">
-        <em>*Acesta este un site de test. Proiectele complete cu imagini și planșe vor fi încărcate în curând.*</em>
-    </p>
+    <section id="acasa" class="hero">
+        <h1 data-aos="fade-up" data-aos-duration="1000">INGINER PROIECTANT<br><span>DRUMURI & PODURI</span></h1>
+        <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Schițez legături, modelez infrastructura viitorului.</h2>
+        <div class="cta-buttons" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <a href="#proiecte" class="btn btn-primary">Vezi Proiecte</a>
+            <a href="#contact" class="btn btn-secondary">Contact rapid</a>
+        </div>
+    </section>
+
+    <section id="proiecte">
+        <h2 class="section-title" data-aos="fade-right">PROIECTE RECENTE</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="tech-tags">
+                    <span class="tag">Civil 3D</span>
+                    <span class="tag secondary">AutoCAD</span>
+                </div>
+                <h3>Proiect de Licență</h3>
+                <p><strong>Autostradă Urbană și Noduri Rutiere</strong> – Analiza și proiectarea detaliată a unui tronson complex, concentrându-mă pe modelarea fluxurilor de trafic, pante și curbe de tranziție optime.</p>
+                <a href="#" class="view-btn">Explorează Proiect <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="tech-tags">
+                    <span class="tag">Infraworks</span>
+                    <span class="tag secondary">AutoCAD</span>
+                </div>
+                <h3>Proiect de Master</h3>
+                <p><strong>Modernizare Infrastructură Rutieră și Detalii de Execuție</strong> – Proiectarea tehnică a elementelor de legătură, soluții inovatoare pentru scurgerea apelor, borduri și amenajarea intersecțiilor de mare viteză.</p>
+                <a href="#" class="view-btn">Explorează Proiect <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="tech-tags">
+                    <span class="tag">AutoCAD</span>
+                    <span class="tag secondary">Proiectare 3D</span>
+                </div>
+                <h3>Alte Colaborări</h3>
+                <p>Modele și profile rutiere realizate pentru diverse lucrări practice. Detalii specifice de execuție, îmbrăcăminți rutiere și dimensionări de structuri rutiere.</p>
+                <a href="#" class="view-btn">Explorează Proiect <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" data-aos="zoom-in">
+        <div class="contact-container">
+            <h2 style="color: var(--text-bright); margin-bottom: 10px;">Să construim ceva împreună!</h2>
+            <p>Ești interesat de o colaborare sau vrei să discutăm detalii tehnice?</p>
+            <a href="mailto:alexandru.harapciuc@yahoo.com" class="contact-email">alexandru.harapciuc@yahoo.com</a>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Alexandru Harapciuc. Toate drepturile rezervate. Realizat pe GitHub Pages.</p>
+    </footer>
+
+    <!-- Script pentru activarea animațiilor -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // Animă o singură dată la derulare, pentru a nu deveni obositor
+            offset: 120
+        });
+    </script>
 </body>
 </html>
