@@ -3,246 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandru Harapciuc | Inginer Proiectant</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Alexandru Harapciuc | Proiectare Infrastructură</title>
+    <!-- Fonturi futuriste -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-main: #050505;
-            --grid-color: rgba(0, 255, 204, 0.05);
-            --accent: #00ffcc;
-            --text-light: #e0e0e0;
-            --text-muted: #888;
-            --card-bg: rgba(20, 20, 20, 0.8);
-            --border-color: rgba(0, 255, 204, 0.2);
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --dark-bg: #030305;
+            --glass-bg: rgba(20, 20, 25, 0.4);
+            --glass-border: rgba(0, 243, 255, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-light);
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+            overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* Fundal animat tip Grilă CAD/Radar */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            animation: gridMove 20s linear infinite;
         }
 
-        h1, h2, h3, .mono { font-family: 'Share Tech Mono', monospace; }
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
+        }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .glow-orb {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,243,255,0.15) 0%, rgba(0,0,0,0) 70%);
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(30px);
+        }
 
-        /* Navigație minimală */
+        /* Navigație tip Glassmorphism */
         nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 30px 0; border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            width: 90%;
+            left: 5%;
+            top: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
-        .logo-box { border: 1px solid var(--accent); padding: 5px 10px; color: var(--accent); font-size: 0.9rem; }
-        .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { color: var(--text-light); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
 
-        /* Secțiunea Hero */
-        .hero { padding: 80px 0; border-bottom: 1px dashed var(--border-color); }
-        .hero-subtitle { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .hero h1 { font-size: 4rem; line-height: 1; margin-bottom: 25px; color: #fff; }
-        .hero p { max-width: 700px; font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; }
-        
-        .action-btns { display: flex; gap: 15px; }
-        .btn {
-            padding: 12px 25px; border: 1px solid var(--border-color); background: transparent;
-            color: var(--text-light); text-decoration: none; font-family: 'Share Tech Mono';
-            transition: all 0.3s; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
-        .btn:hover { background: rgba(0, 255, 204, 0.1); border-color: var(--accent); color: var(--accent); box-shadow: 0 0 15px rgba(0, 255, 204, 0.2); }
 
-        /* Secțiuni (01, 02, 03) */
-        section { padding: 80px 0; border-bottom: 1px dashed var(--border-color); }
-        .section-header { display: flex; align-items: baseline; gap: 15px; margin-bottom: 40px; }
-        .section-num { border: 1px solid var(--border-color); padding: 5px 10px; color: var(--accent); font-size: 0.9rem; }
-        .section-title { font-size: 2.5rem; color: #fff; }
-
-        /* Filtre proiecte */
-        .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
-        .filter-btn {
-            background: transparent; border: 1px solid var(--border-color); color: var(--text-muted);
-            padding: 8px 15px; font-family: 'Share Tech Mono'; font-size: 0.85rem; cursor: pointer; transition: 0.3s;
+        .logo span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0,243,255,0.5);
         }
-        .filter-btn.active, .filter-btn:hover { background: rgba(0, 255, 204, 0.1); border-color: var(--accent); color: var(--accent); }
 
-        /* Grila de proiecte */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
-        .project-card { background: var(--card-bg); border: 1px solid var(--border-color); display: flex; flex-direction: column; transition: transform 0.3s; }
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 255, 204, 0.05); }
-        
-        .card-content { padding: 25px; flex-grow: 1; }
-        .card-tags { color: var(--accent); font-size: 0.75rem; margin-bottom: 15px; letter-spacing: 1px; font-family: 'Share Tech Mono'; }
-        .card-title { font-size: 1.4rem; color: #fff; margin-bottom: 15px; }
-        .card-desc { font-size: 0.9rem; color: var(--text-muted); }
-        
-        .card-meta { display: flex; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .meta-box { flex: 1; padding: 10px 25px; border-right: 1px solid rgba(255,255,255,0.05); }
-        .meta-box:last-child { border-right: none; }
-        .meta-label { font-size: 0.65rem; color: var(--text-muted); font-family: 'Share Tech Mono'; }
-        .meta-value { font-size: 0.9rem; color: #fff; font-family: 'Share Tech Mono'; }
-
-        .card-actions { display: flex; }
-        .action-link { 
-            flex: 1; text-align: center; padding: 15px; font-family: 'Share Tech Mono'; font-size: 0.85rem; 
-            color: var(--text-light); text-decoration: none; border-right: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
-            background: rgba(0,0,0,0.3);
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
         }
-        .action-link:last-child { border-right: none; }
-        .action-link:hover { color: var(--accent); background: rgba(0, 255, 204, 0.05); }
 
-        /* Grila Competențe */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); }
-        .skill-box { background: var(--card-bg); padding: 25px; transition: background 0.3s; }
-        .skill-box:hover { background: rgba(0, 255, 204, 0.05); }
-        .skill-category { font-size: 0.75rem; color: var(--text-muted); font-family: 'Share Tech Mono'; text-transform: uppercase; margin-bottom: 10px; }
-        .skill-name { font-size: 1.1rem; color: #fff; font-weight: 600; }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
 
-        /* Contact */
-        .contact-list { max-width: 600px; }
-        .contact-item { display: flex; border-bottom: 1px dashed var(--border-color); padding: 20px 0; align-items: center; }
-        .contact-label { width: 150px; font-family: 'Share Tech Mono'; font-size: 0.85rem; color: var(--text-muted); }
-        .contact-value { color: #fff; text-decoration: none; font-size: 1.1rem; transition: color 0.3s; }
-        .contact-value:hover { color: var(--accent); }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #a0aab5;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
 
-        footer { text-align: center; padding: 30px; font-size: 0.8rem; color: var(--text-muted); font-family: 'Share Tech Mono'; }
+        .btn-neon {
+            padding: 15px 40px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--neon-blue);
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+        }
+
+        .btn-neon:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
+        }
+
+        /* Secțiunea Proiecte - UI Complex/Simplu */
+        .projects {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+            transition: 0.5s;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+        }
+
+        .glass-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .glass-card p {
+            font-size: 0.95rem;
+            color: #8b949e;
+            margin-bottom: 20px;
+        }
+
+        .tech-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            font-size: 0.75rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <nav>
-            <div class="logo-box mono">AH</div>
-            <div class="mono" style="color: #fff; font-size: 1.1rem;">Alexandru Harapciuc</div>
-            <ul class="nav-links mono">
-                <li><a href="#proiecte">Proiecte</a></li>
-                <li><a href="#competente">Competențe</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <div class="cyber-grid"></div>
+    <div class="glow-orb"></div>
 
-        <section class="hero">
-            <span class="hero-subtitle">Inginer Proiectant Infrastructură</span>
-            <h1>Inginer<br>Civil.</h1>
-            <p>Absolvent de Inginerie Urbană și Dezvoltare Regională (IUDR), cu o concentrare puternică pe proiectarea de drumuri, autostrăzi urbane, străzi și infrastructură edilitară. Acest portofoliu demonstrează abilitatea mea de a implementa riguros detalii de execuție, de la aliniamente spațiale complexe până la dimensionarea corectă a bordurilor și sistemelor de scurgere.</p>
-            <div class="action-btns">
-                <a href="#proiecte" class="btn">Vezi proiectele <i class="fa-solid fa-arrow-down"></i></a>
-                <a href="#contact" class="btn">Trimite un mail</a>
-            </div>
-        </section>
+    <nav>
+        <div class="logo">ALEX<span>.</span>HARAPCIUC</div>
+    </nav>
 
-        <section id="proiecte">
-            <div class="section-header">
-                <span class="section-num mono">01</span>
-                <h2 class="section-title">Proiecte</h2>
-            </div>
+    <section class="hero">
+        <h1>Infrastructură<br>Rutieră</h1>
+        <p>Inginer Proiectant axat pe optimizarea autostrăzilor urbane, proiectarea rețelei de străzi și detaliile avansate de execuție.</p>
+        <a href="#proiecte" class="btn-neon">Inițializare Proiecte</a>
+    </section>
 
-            <div class="filters">
-                <button class="filter-btn active">Toate</button>
-                <button class="filter-btn">Drumuri & Străzi</button>
-                <button class="filter-btn">Autostrăzi Urbane</button>
-                <button class="filter-btn">Detalii de Execuție</button>
-                <button class="filter-btn">Intersecții</button>
+    <section id="proiecte" class="projects">
+        <h2 class="section-title">Portofoliu Tehnic</h2>
+        
+        <div class="cards-container">
+            <!-- Proiect 1 -->
+            <div class="glass-card">
+                <i class="fa-solid fa-road card-icon"></i>
+                <h3>Autostrăzi Urbane</h3>
+                <p>Proiect de Licență: Analiza și dimensionarea fluxurilor pentru autostrăzi urbane. Integrarea soluțiilor pentru optimizarea traficului și siguranța circulației.</p>
+                <div class="tech-list">
+                    <span class="tech-item">Civil 3D</span>
+                    <span class="tech-item">Plan de situație</span>
+                </div>
             </div>
 
-            <div class="projects-grid">
-                <!-- Proiect 1 -->
-                <div class="project-card">
-                    <div class="card-content">
-                        <div class="card-tags">AUTOSTRĂZI URBANE · DRUMURI</div>
-                        <h3 class="card-title">Proiectare Autostradă Urbană - Proiect Licență</h3>
-                        <p class="card-desc">Modelarea fluxurilor de trafic și proiectarea aliniamentelor pentru un tronson de autostradă urbană, incluzând curbe de tranziție și profile longitudinale optimizate.</p>
-                    </div>
-                    <div class="card-meta">
-                        <div class="meta-box"><div class="meta-label">NR.</div><div class="meta-value">01</div></div>
-                        <div class="meta-box"><div class="meta-label">AN</div><div class="meta-value">2026</div></div>
-                    </div>
-                    <div class="card-actions">
-                        <a href="#" class="action-link">Partea scrisă</a>
-                        <a href="#" class="action-link" style="color: var(--accent);">Partea desenată</a>
-                    </div>
+            <!-- Proiect 2 -->
+            <div class="glass-card">
+                <i class="fa-solid fa-layer-group card-icon"></i>
+                <h3>Proiectare Străzi & Borduri</h3>
+                <p>Proiect de Master: Detalii de execuție la nivel microscopic. Proiectarea stradală, încadrarea corectă a bordurilor și soluții tehnice pentru scurgerea apelor.</p>
+                <div class="tech-list">
+                    <span class="tech-item">AutoCAD</span>
+                    <span class="tech-item">Profile Transversale</span>
                 </div>
+            </div>
 
-                <!-- Proiect 2 -->
-                <div class="project-card">
-                    <div class="card-content">
-                        <div class="card-tags">STRĂZI · DETALII EXECUȚIE</div>
-                        <h3 class="card-title">Infrastructură Rutieră și Detalii Edilitare - Proiect Master</h3>
-                        <p class="card-desc">Proiectare la nivel microscopic a tramei stradale. Implementarea soluțiilor tehnice pentru încadrarea bordurilor, structuri rutiere și scurgerea apelor pluviale.</p>
-                    </div>
-                    <div class="card-meta">
-                        <div class="meta-box"><div class="meta-label">NR.</div><div class="meta-value">02</div></div>
-                        <div class="meta-box"><div class="meta-label">AN</div><div class="meta-value">2026</div></div>
-                    </div>
-                    <div class="card-actions">
-                        <a href="#" class="action-link">Partea scrisă</a>
-                        <a href="#" class="action-link" style="color: var(--accent);">Partea desenată</a>
-                    </div>
+            <!-- Proiect 3 -->
+            <div class="glass-card">
+                <i class="fa-solid fa-bezier-curve card-icon"></i>
+                <h3>Intersecții & Amenajări</h3>
+                <p>Conceperea planimetriei și a nivelmentului pentru intersecții și noduri rutiere complexe, asigurând o integrare perfectă în trama stradală existentă.</p>
+                <div class="tech-list">
+                    <span class="tech-item">Infraworks</span>
+                    <span class="tech-item">Modelare 3D</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="competente">
-            <div class="section-header">
-                <span class="section-num mono">02</span>
-                <h2 class="section-title">Competențe</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-box">
-                    <div class="skill-category">Proiectare Rutieră 3D</div>
-                    <div class="skill-name">Civil 3D + AutoCAD</div>
-                </div>
-                <div class="skill-box">
-                    <div class="skill-category">Modelare Infrastructură</div>
-                    <div class="skill-name">Autodesk Infraworks</div>
-                </div>
-                <div class="skill-box">
-                    <div class="skill-category">Sisteme Informatice Geografice</div>
-                    <div class="skill-name">ArcGIS / QGIS</div>
-                </div>
-                <div class="skill-box">
-                    <div class="skill-category">Prelucrare Date</div>
-                    <div class="skill-name">MS Excel (Analiză Date)</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="section-header">
-                <span class="section-num mono">03</span>
-                <h2 class="section-title">Contact</h2>
-            </div>
-            <div class="contact-list">
-                <div class="contact-item">
-                    <div class="contact-label">E-MAIL</div>
-                    <a href="mailto:alexandru.harapciuc@yahoo.com" class="contact-value">alexandru.harapciuc@yahoo.com</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">TELEFON</div>
-                    <a href="tel:+40700000000" class="contact-value">+40 7XX XXX XXX</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">LINKEDIN</div>
-                    <a href="#" class="contact-value">linkedin.com/in/alexandru-harapciuc/</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">LOCAȚIE</div>
-                    <div class="contact-value">Florești, Cluj, România</div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            Portofoliu Tehnic &copy; 2026
-        </footer>
-    </div>
+    <footer>
+        <p>&copy; 2026 Alexandru Harapciuc. Sistem online.</p>
+    </footer>
 
 </body>
 </html>
