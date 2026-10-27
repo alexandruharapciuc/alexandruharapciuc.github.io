@@ -189,7 +189,31 @@
                 <h2 class="section-title">Portofoliu Tehnic</h2>
             </div>
 
+            
             <div class="projects-grid">
+
+                <div class="project-card" style="border: 2px solid var(--accent-blue); box-shadow: 0 0 15px rgba(0, 168, 255, 0.25);">
+                    <div class="card-header">
+                        <div class="project-tags mono">
+                            <span class="tag" style="background: var(--accent-blue); color: #fff;">Lucrare de Licență</span>
+                            <span class="tag">Inginerie Urbană</span>
+                            <span class="tag">Infrastructură & Trafic</span>
+                            <span class="tag">UTCN 2025</span>
+                        </div>
+                        <h3>ANALIZA ȘI PROIECTAREA INFRASTRUCTURII RUTIERE PENTRU UN ANSAMBLU REZIDENȚIAL ÎN CONTEXT URBAN</h3>
+                        <p>În cadrul acestui proiect se realizează infrastructura rutieră necesară pentru un complex rezidențial privat situat în localitatea Florești, județul Cluj, compus din 9 blocuri și 108 apartamente. Totodată, va fi realizat și un studiu asupra UAT Florești, vizând aspecte precum elementele geografice și datele demografice, hidrografia, resursele turistice și riscurile naturale, infrastructura de transport, siguranța circulației, serviciile comunitare de interes public, mobilitatea urbană și perspectivele de dezvoltare locală. Deși lucrările de construcție a blocurilor fac parte din dezvoltarea ansamblului, acestea nu constituie obiectul prezentului proiect, care se concentrează exclusiv pe proiectarea și implementarea infrastructurii rutiere aferente acestuia.
+Lucrările incluse în proiect presupun studierea situației existente, proiectarea structurii rutiere, asigurarea scurgerii apelor, realizarea unor prognoze de trafic, managementul deșeurilor, amenajarea parcajelor, pistelor pentru bicicletă și a spațiilor verzi, inclusiv zone de recreere și activități mixte, care vor răspunde nevoilor tuturor categoriilor de vârstă.
+</p>
+                    </div>
+                    <div class="card-meta mono">
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Proiect de diplomă</div></div>
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+                    </div>
+                     <div class="card-actions">
+                        <a href="#" onclick="openPdfModal(event, 'LIC_SCRISĂ.pdf')" class="btn-action mono"><i class="fa-regular fa-file-pdf"></i> Partea scrisă</a>
+                        <a href="#" onclick="openPdfModal(event, 'LIC_DESENATĂ.pdf')" class="btn-action mono" style="color: var(--accent-blue);"><i class="fa-solid fa-pen-ruler"></i> Partea desenată</a>
+                    </div>
+                </div>
                 <!-- Proiect Master -->
                 <div class="project-card">
                     <div class="card-header">
@@ -782,6 +806,77 @@
             }
         }
     </script>
+
+    <!-- ======================================================= -->
+<!-- BLOC INTEGRAT DE PROTECȚIE (ANTI COPY-PASTE & INSPECT) -->
+<!-- Se plasează înainte de eticheta </body>                -->
+<!-- ======================================================= -->
+
+<!-- 1. STILURI CSS - Protecție vizuală & Selecție -->
+<style>
+    /* Blochează selectarea textului pe toată pagina */
+    *, *::before, *::after {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+    }
+
+    /* Previne tragerea imaginilor, cadrelor și PDF-urilor */
+    img, iframe, embed, object, canvas {
+        -webkit-user-drag: none !important;
+        user-drag: none !important;
+        pointer-events: auto;
+    }
+</style>
+
+<!-- 2. SCRIPT JS - Blochează Click Dreapta, Taste & Clipboard -->
+<script>
+    (function() {
+        'use strict';
+
+        // Blochează meniul de Click Dreapta (contextmenu)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        }, false);
+
+        // Blochează acțiunile de Clipboard & Drag
+        document.addEventListener('copy', function(e) { e.preventDefault(); }, false);
+        document.addEventListener('cut', function(e) { e.preventDefault(); }, false);
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); }, false);
+
+        // Blochează scurtăturile de tastatură critice
+        document.addEventListener('keydown', function(e) {
+            // F12 (Developer Tools)
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+
+            if (e.ctrlKey || e.metaKey) {
+                // Ctrl + U (Vizualizare Sursă Pagină)
+                if (e.keyCode === 85) { e.preventDefault(); return false; }
+                // Ctrl + S (Salvare Pagină Web)
+                if (e.keyCode === 83) { e.preventDefault(); return false; }
+                // Ctrl + P (Imprimare / Print)
+                if (e.keyCode === 80) { e.preventDefault(); return false; }
+                // Ctrl + C (Copiere)
+                if (e.keyCode === 67) { e.preventDefault(); return false; }
+                // Ctrl + X (Tăiere)
+                if (e.keyCode === 88) { e.preventDefault(); return false; }
+                // Ctrl + A (Selectare Tot)
+                if (e.keyCode === 65) { e.preventDefault(); return false; }
+
+                // Ctrl + Shift + I / J / C (Inspect Element & Console)
+                if (e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        }, false);
+    })();
+</script>
 </body>
 </html>
 
