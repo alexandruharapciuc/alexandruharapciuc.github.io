@@ -21,18 +21,19 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            /* Grilă fină tip planșă CAD pe fundal */
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center top;
-        }
+      body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color); /* Culoare de siguranță */
+    color: var(--text-main);
+    line-height: 1.6;
+    
+    /* SETĂRILE PENTRU NOUA IMAGINE DE FUNDAL */
+    background-image: url('FUNDAL.jpg'); /* Numele exact al pozei tale */
+    background-size: cover; /* Face imaginea să acopere tot ecranul */
+    background-position: center top; /* O centrează perfect */
+    background-repeat: no-repeat; /* Previne multiplicarea ei */
+    background-attachment: fixed; /* Fundalul rămâne fix când dai scroll paginii (efect modern) */
+}
 
         .mono { font-family: 'JetBrains Mono', monospace; }
         
