@@ -64,6 +64,37 @@
         .section-num { font-size: 0.9rem; color: var(--text-muted); }
         .section-title { font-size: 2rem; font-weight: 600; letter-spacing: -1px; }
 
+        /* Filtrare Portofoliu */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            padding: 7px 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 2px;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--text-main);
+            color: #fff;
+            border-color: var(--text-main);
+        }
+
         /* Grila de proiecte */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 30px; }
         .project-card { 
@@ -189,10 +220,28 @@
                 <h2 class="section-title">Portofoliu Tehnic</h2>
             </div>
 
+            <!-- BARA DE FILTRARE -->
+            <div class="filter-container mono">
+                <button class="filter-btn active" onclick="filterProjects('all', this)">Toate</button>
+                <button class="filter-btn" onclick="filterProjects('licenta', this)">Licență</button>
+                <button class="filter-btn" onclick="filterProjects('master', this)">Master</button>
+                <button class="filter-btn" onclick="filterProjects('cercetare', this)">Cercetare</button>
+                <button class="filter-btn" onclick="filterProjects('drumuri', this)">Drumuri</button>
+                <button class="filter-btn" onclick="filterProjects('poduri', this)">Poduri (sau lucrări de artă)</button>
+                <button class="filter-btn" onclick="filterProjects('tramvai', this)">Tramvai</button>
+                <button class="filter-btn" onclick="filterProjects('cladiri', this)">Clădiri</button>
+                <button class="filter-btn" onclick="filterProjects('fundatii', this)">Fundații</button>
+                <button class="filter-btn" onclick="filterProjects('trafic', this)">Trafic</button>
+                <button class="filter-btn" onclick="filterProjects('mobilitate', this)">Mobilitate urbană</button>
+                <button class="filter-btn" onclick="filterProjects('siguranta', this)">Siguranța circulației</button>
+                <button class="filter-btn" onclick="filterProjects('ofertare', this)">Ofertare</button>
+                <button class="filter-btn" onclick="filterProjects('urbanism', this)">Urbanism</button>
+                <button class="filter-btn" onclick="filterProjects('gis', this)">GIS</button>
+            </div>
             
             <div class="projects-grid">
 
-                <div class="project-card" style="border: 2px solid var(--accent-blue); box-shadow: 0 0 15px rgba(0, 168, 255, 0.25);">
+                <div class="project-card" data-tags="licenta drumuri gis mobilitate urbanism" style="border: 2px solid var(--accent-blue); box-shadow: 0 0 15px rgba(0, 168, 255, 0.25);">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag" style="background: var(--accent-blue); color: #fff;">Lucrare de Licență</span>
@@ -215,7 +264,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                          <a href="#" onclick="openPdfModal(event, 'LIC_GIS.pdf')" class="btn-action mono"><i class="fa-regular fa-file-pdf"></i> Planșe GIS & Analiză teritorială</a>
                     </div>
                 </div>
-           <div class="project-card">
+
+                <div class="project-card" data-tags="master cercetare drumuri trafic">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Sisteme WIM</span>
@@ -236,7 +286,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="master cercetare siguranta drumuri">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Siguranță Rutieră</span>
@@ -256,7 +307,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="master cercetare mobilitate trafic">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Poluare Fonică</span>
@@ -276,7 +328,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="master drumuri">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Investigații complexe</span>
@@ -296,7 +349,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="master trafic">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Studiu de Trafic</span>
@@ -317,7 +371,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="master drumuri trafic">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Studiu de Trafic</span>
@@ -338,7 +393,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="master poduri ofertare drumuri">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Costuri transport</span>
@@ -358,7 +414,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-        <div class="project-card">
+
+        <div class="project-card" data-tags="master mobilitate trafic">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Senzori Mobili GPS</span>
@@ -367,7 +424,7 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </div>
     <h3>Evaluarea indicilor de mobilitate urbană și a timpilor de deplasare ai vehiculelor de intervenție pe baza datelor GPS</h3>
     <p>Utilizarea datelor telematice de flotă (Track GPS AROBS) pentru evaluarea indicilor de mobilitate urbană (fluență, densitate în exploatare, întârzieri DDc/DDp) și determinarea timpilor de răspuns ai vehiculelor de urgență pe coridorul Clinicilor – Horea din Cluj-Napoca.</p>
-  </div> <!-- Tagul de închidere care lipsea -->
+  </div> <!-- Tagul de închidere care lipsea a fost corectat -->
   <div class="card-meta mono">
     <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
     <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
@@ -378,7 +435,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
-                    <div class="project-card">
+
+                    <div class="project-card" data-tags="master trafic mobilitate">
   <div class="card-header">
     <div class="project-tags mono">
       <span class="tag">Simulare PTV Vissim</span>
@@ -398,8 +456,9 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
     </a>
   </div>
 </div>
+
                 <!-- Proiect Master -->
-                <div class="project-card">
+                <div class="project-card" data-tags="master cercetare trafic drumuri mobilitate">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">PTV Vissim</span>
@@ -420,7 +479,7 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                 </div>
 
                 <!-- Proiect Licenta -->
-                <div class="project-card">
+                <div class="project-card" data-tags="licenta cladiri">
     <div class="card-header">
         <div class="project-tags mono">
             <span class="tag">Structuri</span>
@@ -439,7 +498,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
         <a href="#" onclick="openPdfModal(event, 'BAP2_D.pdf')" class="btn-action mono" style="color: var(--accent-blue);"><i class="fa-solid fa-pen-ruler"></i> Partea desenată</a>
     </div>
 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta drumuri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Proiectare Rutieră</span>
@@ -459,7 +519,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta drumuri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Proiectare Rutieră</span>
@@ -479,7 +540,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta poduri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Poduri & Pasarele</span>
@@ -499,7 +561,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta poduri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Construcții Metalice</span>
@@ -519,7 +582,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta tramvai mobilitate drumuri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Infrastructură Feroviară</span>
@@ -539,8 +603,9 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
+
                 <!-- Proiect Fundații Izolate -->
-                <div class="project-card">
+                <div class="project-card" data-tags="licenta fundatii">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Fundații</span>
@@ -562,7 +627,7 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                 </div>
 
                 <!-- Proiect Fundații Continue -->
-                <div class="project-card">
+                <div class="project-card" data-tags="licenta fundatii">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Fundații</span>
@@ -584,7 +649,7 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                 </div>
 
                 <!-- Proiect Zid de Sprijin -->
-                <div class="project-card">
+                <div class="project-card" data-tags="licenta fundatii drumuri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Geotehnică</span>
@@ -604,7 +669,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta cladiri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Clădiri</span>
@@ -624,7 +690,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta gis siguranta trafic">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Siguranță Rutieră</span>
@@ -644,7 +711,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta trafic siguranta">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Ingineria Traficului</span>
@@ -664,7 +732,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta urbanism">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Regenerare Urbană</span>
@@ -688,7 +757,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta urbanism drumuri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Urbanism & PUG</span>
@@ -709,7 +779,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta ofertare cladiri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Management</span>
@@ -729,7 +800,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta drumuri siguranta">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Iluminat Urban</span>
@@ -749,7 +821,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta urbanism gis">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Infrastructură Urbană</span>
@@ -769,7 +842,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta drumuri urbanism ofertare">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Politici & Strategii Urbane</span>
@@ -789,7 +863,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta drumuri ofertare urbanism">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Politici & Strategii Urbane</span>
@@ -811,7 +886,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta cladiri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Evaluare Imobiliară</span>
@@ -830,7 +906,8 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                         </a>
                     </div>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-tags="licenta mobilitate trafic drumuri">
                     <div class="card-header">
                         <div class="project-tags mono">
                             <span class="tag">Infrastructură Urbană</span>
@@ -989,6 +1066,25 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
                 closePdfModal();
             }
         }
+        
+        // FUNCȚIA DE FILTRARE
+        function filterProjects(category, btnElement) {
+            // 1. Schimbă butonul activ
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // 2. Filtrează cardurile pe baza cuvintelor din data-tags
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                const tags = (card.getAttribute('data-tags') || '').split(' ');
+                
+                if (category === 'all' || tags.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
     </script>
 
     <!-- ======================================================= -->
@@ -1063,5 +1159,3 @@ Lucrările incluse în proiect presupun studierea situației existente, proiecta
 </script>
 </body>
 </html>
-
-```
