@@ -47,57 +47,30 @@
    /* 1. Fundalul curat și clar, fără blur pe pagină */
 
 body {
-
     font-family: 'Inter', sans-serif;
-
     color: var(--text-main);
-
     line-height: 1.6;
-
-    background-image: url('FUNDAL.png'); 
-
-    background-size: cover; 
-
-    background-position: center center; 
-
-    background-repeat: no-repeat; 
-
+    
+    /* Fundalul tău clar și fix */
+    background-image: url('fundal-urbanism.jpg'); /* Înlocuiește cu numele exact al imaginii tale */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-
-    background-color: rgba(248, 250, 252, 0.6);
-
-    background-blend-mode: overlay;
-
 }
 
-
-
-/* 2. Blur-ul și sticla mată puse EXCLUSIV pe dreptunghiul alb */
-
 .container { 
-
-    max-width: 1280px; 
-
-    width: 92%; 
-
+    max-width: 1280px; /* Am lărgit dreptunghiul de la 1100px la 1280px */
+    width: 92%; /* Asigură o marjă fină pe ecranele mai mici */
     margin: 0 auto; 
-
-    padding: 0 40px; 
-
+    padding: 0 40px; /* Un padding lateral mai generos */
     
-
-    /* Aici se întâmplă magia: alb semi-transparent + blur pe casetă */
-
-    background: rgba(255, 255, 255, 0.85); 
-
+    /* Transparență fină (sticlă mată) ca să se vadă fundalul discret dedesubt */
+    background: rgba(255, 255, 255, 0.82); 
     backdrop-filter: blur(12px); 
-
-    -webkit-backdrop-filter: blur(12px); /* Compatibilitate Safari */
-
     
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-
+    /* Umbră fină la margini pentru a elimina efectul de tăiere bruscă */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
 }
 
 
