@@ -21,19 +21,30 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-     body {
+    body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color); 
     color: var(--text-main);
     line-height: 1.6;
-    
-    /* SETĂRILE PENTRU NOUA IMAGINE DE FUNDAL */
-    background-image: url('FUNDAL.png'); 
-    background-size: cover; 
-    background-position: center top; 
-    background-repeat: no-repeat; 
-    background-attachment: fixed; 
-} /* <-- Aici se închide corect body */
+    background: transparent; /* Am scos culoarea albă solidă ca să se vadă poza */
+    position: relative;
+}
+
+/* Creează stratul de fundal cu imaginea și blurul fin */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('FUNDAL.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    filter: blur(4px); /* Aici reglezi gradul de blur (4px e fin și curat) */
+    transform: scale(1.02); /* Previene marginile albe de la blur */
+    z-index: -1; /* Împinge fundalul în spatele întregului conținut */
+}
 
 /* Clasa .mono stă separat, în afara lui body */
 .mono { 
