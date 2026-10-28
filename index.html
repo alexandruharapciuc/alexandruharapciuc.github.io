@@ -62,11 +62,26 @@ body::before {
 }
 
         /* Navigație minimală */
+/* Navigație minimală aliniată perfect */
 nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 25px 40px; /* Am adăugat 40px padding stânga-dreapta ca să se alinieze cu conținutul */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    
+    /* Setăm lățimea exact la fel ca în container și o centrăm */
+    max-width: 1280px;
+    width: 92%;
+    margin: 0 auto;
+    
+    /* Fără padding lateral suplimentar, ca să nu depășească marginile */
+    padding: 25px 0; 
+    
     border-bottom: 1px solid var(--border-light);
-    position: sticky; top: 0; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); z-index: 100;
+    position: sticky; 
+    top: 0; 
+    background: rgba(255, 255, 255, 0.92); 
+    backdrop-filter: blur(10px); 
+    z-index: 100;
 }
         .logo { font-weight: 600; font-size: 1.1rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
         .logo-badge { background: var(--text-main); color: #fff; padding: 4px 8px; font-size: 0.8rem; }
