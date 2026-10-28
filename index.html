@@ -56,13 +56,18 @@ nav {
     justify-content: space-between; 
     align-items: center;
     
-    width: 100%; /* Ocupă exact 100% din lățimea utilă a containerului alb */
-    padding: 25px 0; /* Fără padding lateral, marginile sunt controlate de container */
+    /* Preluăm exact aceleși dimensiuni ca și dreptunghiul alb (.container) */
+    max-width: 1280px;
+    width: 92%;
+    margin: 0 auto; /* Îl centrează perfect pe ecran */
+    
+    /* Adăugăm un padding de 40px strict pe interiorul lui, egal cu cel din container */
+    padding: 25px 40px; 
     
     border-bottom: 1px solid var(--border-light);
     position: sticky; 
     top: 0; 
-    background: rgba(255, 255, 255, 0.92); 
+    background: rgba(255, 255, 255, 0.95); 
     backdrop-filter: blur(10px); 
     z-index: 100;
 }
