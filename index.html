@@ -185,16 +185,38 @@
         .skills-table th { background: var(--hover-bg); font-weight: 500; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; width: 30%; }
         .skills-table td { font-size: 1rem; font-weight: 500; background: #fff; }
 
-        /* Contact simplificat */
-        .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--border-light); }
-        .contact-block { padding: 40px; border-right: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: #fff; transition: 0.3s; }
+        /* Contact Modernizat în 3 coloane cu iconițe */
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border-light); }
+        .contact-block { padding: 40px; border-right: 1px solid var(--border-light); background: #fff; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .contact-block:last-child { border-right: none; }
         .contact-block:hover { background: var(--hover-bg); }
-        .contact-block:nth-child(even) { border-right: none; }
-        .contact-block:nth-child(3), .contact-block:nth-child(4) { border-bottom: none; }
         
         .contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .contact-value { font-size: 1.2rem; color: var(--text-main); text-decoration: none; font-weight: 500; }
+        .contact-value { font-size: 1.15rem; color: var(--text-main); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
         .contact-value[href]:hover { color: var(--accent-blue); }
+        .contact-value i { color: var(--accent-blue); }
+
+        /* Buton dedicat pentru LinkedIn cu iconiță oficială */
+        .btn-linkedin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #0a66c2;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 5px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .btn-linkedin:hover {
+            background: #084e96;
+            color: #fff;
+            transform: translateY(-2px);
+        }
 
         footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-light); margin-top: 80px; }
 
@@ -267,8 +289,8 @@
                 <p>Inginer licențiat în Inginerie Civilă cu master în Ingineria Infrastructurii Transporturilor. Pregătirea mea se concentrează pe proiectarea geometrică a infrastructurii de transport, modelări de trafic, analiză spațială (GIS), siguranța circulației și mobilitate urbană.</p>
             </div>
             <div class="hero-img-container">
-                <!-- Înlocuiește "poza-profil.jpg" cu numele fișierului tău foto -->
-                <img src=PROFILBUN.jpg" alt="Bernard - Alexandru Harapciuc" class="hero-profile-img">
+                <!-- Fotografie de profil actualizată -->
+                <img src="PROFILBUN.jpg" alt="Bernard - Alexandru Harapciuc" class="hero-profile-img">
             </div>
         </section>
 
@@ -1045,22 +1067,30 @@
                 <h2 class="section-title">Contact</h2>
             </div>
             
-            <div class="contact-grid">
+            <div class="contact-grid" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="contact-block">
-                    <span class="contact-label mono">E-mail</span>
-                    <a href="mailto:alexandru.harapciuc@yahoo.com" class="contact-value">alexandruharapciuc@gmail.com</a>
+                    <div>
+                        <span class="contact-label mono">E-mail</span>
+                        <a href="mailto:alexandruharapciuc@gmail.com" class="contact-value">
+                            <i class="fa-solid fa-envelope"></i> alexandruharapciuc@gmail.com
+                        </a>
+                    </div>
                 </div>
                 <div class="contact-block">
-                    <span class="contact-label mono">Locație</span>
-                    <span class="contact-value">Municipiul Iași, Județul Iași</span>
+                    <div>
+                        <span class="contact-label mono">Telefon</span>
+                        <a href="tel:+40770365031" class="contact-value">
+                            <i class="fa-solid fa-phone"></i> 0770365031
+                        </a>
+                    </div>
                 </div>
                 <div class="contact-block">
-                    <span class="contact-label mono">Disponibilitate</span>
-                    <span class="contact-value">Program complet (8h)</span>
-                </div>
-                <div class="contact-block">
-                    <span class="contact-label mono">LinkedIn</span>
-                    <a href="#" class="contact-value">/in/alexandru-harapciuc</a>
+                    <div>
+                        <span class="contact-label mono">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/harapciuc-bernard-alexandru/" target="_blank" rel="noopener noreferrer" class="btn-linkedin mono">
+                            <i class="fa-brands fa-linkedin"></i> Vezi Profilul
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
