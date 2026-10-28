@@ -21,34 +21,21 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-    body {
+   body {
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
     line-height: 1.6;
-    background: transparent; /* Am scos culoarea albă solidă ca să se vadă poza */
-    position: relative;
-}
-
-/* Creează stratul de fundal cu imaginea și blurul fin */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('FUNDAL.png');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    filter: blur(4px); /* Aici reglezi gradul de blur (4px e fin și curat) */
-    transform: scale(1.02); /* Previene marginile albe de la blur */
-    z-index: -1; /* Împinge fundalul în spatele întregului conținut */
-}
-
-/* Clasa .mono stă separat, în afara lui body */
-.mono { 
-    font-family: 'JetBrains Mono', monospace; 
+    
+    /* Imaginea de fundal curată, clară, fără blur chinuitor */
+    background-image: url('FUNDAL.png'); 
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    
+    /* Opțional: o ușoară tentă albă peste fundal ca să-l mai „stingem” din intensitate dacă e prea strident */
+    background-color: rgba(248, 250, 252, 0.6);
+    background-blend-mode: overlay;
 }
 
 .container { 
@@ -56,9 +43,11 @@ body::before {
     width: 92%; 
     margin: 0 auto; 
     padding: 0 40px; 
-    background: rgba(255, 255, 255, 0.82); 
-    backdrop-filter: blur(12px); 
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+    
+    /* Aici păstrăm efectul fin de sticlă mată (blur doar pe casetă, nu pe tot ecranul) */
+    background: rgba(255, 255, 255, 0.88); /* Un alb puțin mai opac ca să odihnească privirea */
+    backdrop-filter: blur(8px); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
         /* Navigație minimală */
