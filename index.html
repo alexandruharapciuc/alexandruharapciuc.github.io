@@ -21,32 +21,32 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-   body {
+   /* 1. Fundalul curat și clar, fără blur pe pagină */
+body {
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
     line-height: 1.6;
-    
-    /* Imaginea de fundal curată, clară, fără blur chinuitor */
     background-image: url('FUNDAL.png'); 
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; 
     background-attachment: fixed;
-    
-    /* Opțional: o ușoară tentă albă peste fundal ca să-l mai „stingem” din intensitate dacă e prea strident */
     background-color: rgba(248, 250, 252, 0.6);
     background-blend-mode: overlay;
 }
 
+/* 2. Blur-ul și sticla mată puse EXCLUSIV pe dreptunghiul alb */
 .container { 
     max-width: 1280px; 
     width: 92%; 
     margin: 0 auto; 
     padding: 0 40px; 
     
-    /* Aici păstrăm efectul fin de sticlă mată (blur doar pe casetă, nu pe tot ecranul) */
-    background: rgba(255, 255, 255, 0.88); /* Un alb puțin mai opac ca să odihnească privirea */
-    backdrop-filter: blur(8px); 
+    /* Aici se întâmplă magia: alb semi-transparent + blur pe casetă */
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); /* Compatibilitate Safari */
+    
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
