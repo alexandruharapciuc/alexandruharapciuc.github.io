@@ -1,543 +1,2337 @@
 <!DOCTYPE html>
+
 <html lang="ro">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Bernard - Alexandru Harapciuc | Inginer Constructor</title>
+
     <!-- Fonturi curate și tehnice -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     
+
     <style>
+
         :root {
+
             --bg-color: #ffffff;
+
             --grid-color: #f1f5f9;
+
             --text-main: #0f172a;
+
             --text-muted: #64748b;
+
             --accent-blue: #ea9c0c;
+
             --border-light: #e2e8f0;
+
             --hover-bg: #f8fafc;
+
         }
+
+
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-        /* 1. Fundalul curat și clar, fără blur pe pagină */
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-main);
-            line-height: 1.6;
-            background-image: url('FUNDAL.png'); 
-            background-size: cover; 
-            background-position: center center; 
-            background-repeat: no-repeat; 
-            background-attachment: fixed;
-            background-color: rgba(248, 250, 252, 0.6);
-            background-blend-mode: overlay;
-        }
 
-        /* 2. Blur-ul și sticla mată puse EXCLUSIV pe dreptunghiul alb */
-        .container { 
-            max-width: 1280px; 
-            width: 92%; 
-            margin: 0 auto; 
-            padding: 0 40px; 
-            
-            /* Alb semi-transparent + blur pe casetă */
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px); /* Compatibilitate Safari */
-            
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
 
-        /* Navigație minimală integrată perfect în lățimea containerului */
-        nav {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            
-            width: 100%; /* Ocupă exact 100% din lățimea utilă a containerului */
-            padding: 25px 0; /* Fără padding lateral propriu, marginile sunt controlate de container */
-            
-            border-bottom: 1px solid var(--border-light);
-            position: sticky; 
-            top: 0; 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px); 
-            z-index: 100;
-        }
+   /* 1. Fundalul curat și clar, fără blur pe pagină */
+
+body {
+
+    font-family: 'Inter', sans-serif;
+
+    color: var(--text-main);
+
+    line-height: 1.6;
+
+    background-image: url('FUNDAL.png'); 
+
+    background-size: cover; 
+
+    background-position: center center; 
+
+    background-repeat: no-repeat; 
+
+    background-attachment: fixed;
+
+    background-color: rgba(248, 250, 252, 0.6);
+
+    background-blend-mode: overlay;
+
+}
+
+
+
+/* 2. Blur-ul și sticla mată puse EXCLUSIV pe dreptunghiul alb */
+
+.container { 
+
+    max-width: 1280px; 
+
+    width: 92%; 
+
+    margin: 0 auto; 
+
+    padding: 0 40px; 
+
+    
+
+    /* Aici se întâmplă magia: alb semi-transparent + blur pe casetă */
+
+    background: rgba(255, 255, 255, 0.85); 
+
+    backdrop-filter: blur(12px); 
+
+    -webkit-backdrop-filter: blur(12px); /* Compatibilitate Safari */
+
+    
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+        /* Navigație minimală */
+
+nav {
+
+    display: flex; 
+
+    justify-content: space-between; 
+
+    align-items: center;
+
+    
+
+    /* Preluăm exact aceleși dimensiuni ca și dreptunghiul alb (.container) */
+
+    max-width: 1280px;
+
+    width: 92%;
+
+    margin: 0 auto; /* Îl centrează perfect pe ecran */
+
+    
+
+    /* Adăugăm un padding de 40px strict pe interiorul lui, egal cu cel din container */
+
+    padding: 25px 40px; 
+
+    
+
+    border-bottom: 1px solid var(--border-light);
+
+    position: sticky; 
+
+    top: 0; 
+
+    background: rgba(255, 255, 255, 0.95); 
+
+    backdrop-filter: blur(10px); 
+
+    z-index: 100;
+
+}
 
         .logo { font-weight: 600; font-size: 1.1rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+
         .logo-badge { background: var(--text-main); color: #fff; padding: 4px 8px; font-size: 0.8rem; }
+
         
+
         .nav-links { display: flex; gap: 30px; list-style: none; }
+
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.2s; }
+
         .nav-links a:hover { color: var(--accent-blue); }
 
-        .mono { font-family: 'JetBrains Mono', monospace; }
+
 
         /* Secțiunea Hero */
+
         .hero { padding: 100px 0 80px; }
+
         .tech-label { color: var(--accent-blue); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: inline-block; }
+
         .hero h1 { font-size: 4.5rem; line-height: 1.05; letter-spacing: -2px; margin-bottom: 30px; font-weight: 600; }
+
         .hero h1 span { color: var(--accent-blue); }
+
         .hero p { max-width: 650px; font-size: 1.15rem; color: var(--text-muted); margin-bottom: 40px; }
+
         
+
         /* Secțiuni generice */
+
         section { padding: 80px 0; border-top: 1px solid var(--border-light); }
+
         .section-header { margin-bottom: 50px; display: flex; align-items: baseline; gap: 15px; }
+
         .section-num { font-size: 0.9rem; color: var(--text-muted); }
+
         .section-title { font-size: 2rem; font-weight: 600; letter-spacing: -1px; }
 
+
+
         /* Filtrare Portofoliu */
+
         .filter-container {
+
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 8px;
+
             margin-bottom: 35px;
+
         }
+
+
 
         .filter-btn {
-            background: #fff;
-            border: 1px solid var(--border-light);
-            padding: 7px 14px;
-            font-size: 0.75rem;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-radius: 4px;
-        }
+
+    background: #fff;
+
+    border: 1px solid var(--border-light);
+
+    padding: 7px 14px;
+
+    font-size: 0.75rem; /* Dimensiune ajustată pentru a se potrivi cu tagurile */
+
+    font-family: 'JetBrains Mono', monospace; /* Același font tehnic */
+
+    text-transform: uppercase; /* Litere mari */
+
+    font-weight: 500;
+
+    color: var(--text-muted);
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    border-radius: 4px; /* Rotunjire identică cu cea a tagurilor */
+
+}
+
+
 
         .filter-btn:hover {
+
             border-color: var(--accent-blue);
+
             color: var(--accent-blue);
+
         }
+
+
 
         .filter-btn.active {
+
             background: var(--text-main);
+
             color: #fff;
+
             border-color: var(--text-main);
+
         }
+
+
 
         /* Grila de proiecte */
+
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 30px; }
+
         .project-card { 
+
             background: #fff; border: 1px solid var(--border-light); display: flex; flex-direction: column;
+
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
+
         }
+
         .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05); border-color: var(--accent-blue); }
+
         
+
         .card-header { padding: 30px 30px 20px; flex-grow: 1; }
+
         .project-tags { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+
         .tag { font-size: 0.7rem; padding: 4px 10px; background: var(--grid-color); color: var(--text-muted); border-radius: 4px; text-transform: uppercase; font-weight: 500; }
+
         
+
         .project-card h3 { font-size: 1.4rem; margin-bottom: 15px; font-weight: 600; line-height: 1.3; }
+
         .project-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; }
 
+
+
         .card-meta { display: flex; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: #fafafa; }
+
         .meta-item { flex: 1; padding: 12px 30px; border-right: 1px solid var(--border-light); }
+
         .meta-item:last-child { border-right: none; }
+
         .meta-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+
         .meta-value { font-size: 0.9rem; font-weight: 500; color: var(--text-main); }
 
+
+
         /* Butoane acțiune proiecte */
+
         .card-actions { display: flex; }
+
         .btn-action { 
+
             flex: 1; text-align: center; padding: 18px; font-size: 0.85rem; font-weight: 500;
+
             color: var(--text-main); text-decoration: none; border-right: 1px solid var(--border-light);
+
             transition: 0.2s; background: #fff;
+
         }
+
         .btn-action:last-child { border-right: none; }
+
         .btn-action:hover { background: var(--hover-bg); color: var(--accent-blue); }
+
         .btn-action i { margin-right: 6px; font-size: 0.9rem; }
 
+
+
         /* Tabel Competențe Tehnic */
+
         .skills-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+
         .skills-table th, .skills-table td { padding: 20px; text-align: left; border: 1px solid var(--border-light); }
+
         .skills-table th { background: var(--hover-bg); font-weight: 500; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; width: 30%; }
+
         .skills-table td { font-size: 1rem; font-weight: 500; background: #fff; }
 
+
+
         /* Contact simplificat */
+
         .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--border-light); }
+
         .contact-block { padding: 40px; border-right: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: #fff; transition: 0.3s; }
+
         .contact-block:hover { background: var(--hover-bg); }
+
         .contact-block:nth-child(even) { border-right: none; }
+
         .contact-block:nth-child(3), .contact-block:nth-child(4) { border-bottom: none; }
+
         
+
         .contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; display: block; }
+
         .contact-value { font-size: 1.2rem; color: var(--text-main); text-decoration: none; font-weight: 500; }
+
         .contact-value[href]:hover { color: var(--accent-blue); }
+
+
 
         footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-light); margin-top: 80px; }
 
+
+
         @media (max-width: 768px) {
+
             .hero h1 { font-size: 3rem; }
+
             .projects-grid { grid-template-columns: 1fr; }
+
             .contact-grid { grid-template-columns: 1fr; }
+
             .contact-block { border-right: none; border-bottom: 1px solid var(--border-light); }
+
             .contact-block:last-child { border-bottom: none; }
+
             .skills-table th, .skills-table td { display: block; width: 100%; }
+
         }
+
+
 
         /* Stiluri pentru fereastra plutitoare (Modal PDF) */
+
         .modal {
+
             display: none; 
+
             position: fixed;
+
             z-index: 1000; 
+
             left: 0;
+
             top: 0;
+
             width: 100%;
+
             height: 100%;
+
             background-color: rgba(15, 23, 42, 0.85); 
+
             backdrop-filter: blur(5px);
+
         }
+
+
 
         .modal-content {
+
             background-color: var(--bg-color);
+
             margin: 2% auto; 
+
             padding: 15px;
+
             border: 1px solid var(--border-light);
+
             border-radius: 8px;
+
             width: 90%;
+
             height: 90%; 
+
             position: relative;
+
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
         }
+
+
 
         .close-btn {
+
             color: var(--text-muted);
+
             position: absolute;
+
             top: 10px;
+
             right: 20px;
+
             font-size: 30px;
+
             font-weight: bold;
+
             cursor: pointer;
+
             transition: color 0.2s ease;
+
         }
+
+
 
         .close-btn:hover {
+
             color: var(--accent-blue); 
+
         }
+
     </style>
+
 </head>
+
 <body>
 
-    <!-- Containerul principal alb cu sticlă mată (latura de 1280px) -->
+
+
     <div class="container">
-        
-        <!-- Navigația este acum plasată în interior, întinzându-se exact pe lățimea casetei -->
+
         <nav>
+
             <div class="logo"><span class="logo-badge mono">HBA</span> Bernard - Alexandru Harapciuc</div>
+
             <ul class="nav-links mono">
+
                 <li><a href="#proiecte">Proiecte</a></li>
+
                 <li><a href="#competente">Competențe</a></li>
+
                 <li><a href="#contact">Contact</a></li>
+
             </ul>
+
         </nav>
 
+
+
         <section class="hero">
+
             <span class="tech-label mono">PROIECTARE DRUMURI · STUDII DE TRAFIC · SIGURANȚA CIRCULAȚIEI · MOBILITATE URBANĂ</span>
+
             <h1>INGINER<br><span>CONSTRUCTOR</span></h1>
+
             <p>Inginer licențiat în Inginerie Civilă cu master în Ingineria Infrastructurii Transporturilor. Pregătirea mea se concentrează pe proiectarea geometrică a infrastructurii de transport, modelări de trafic, analiză spațială (GIS), siguranța circulației și mobilitate urbană.</p>
+
         </section>
+
+
 
         <section id="proiecte">
+
             <div class="section-header">
+
                 <span class="section-num mono">01 /</span>
+
                 <h2 class="section-title">Portofoliu Tehnic</h2>
+
             </div>
+
+
 
             <!-- BARA DE FILTRARE -->
+
             <div class="filter-container mono">
+
                 <button class="filter-btn active" onclick="filterProjects('all', this)">Toate</button>
+
                 <button class="filter-btn" onclick="filterProjects('licenta', this)">Licență</button>
+
                 <button class="filter-btn" onclick="filterProjects('master', this)">Master</button>
+
                 <button class="filter-btn" onclick="filterProjects('cercetare', this)">Cercetare</button>
+
                 <button class="filter-btn" onclick="filterProjects('drumuri', this)">Drumuri</button>
+
                 <button class="filter-btn" onclick="filterProjects('poduri', this)">Poduri</button>
+
                 <button class="filter-btn" onclick="filterProjects('tramvai', this)">Tramvai</button>
+
                 <button class="filter-btn" onclick="filterProjects('cladiri', this)">Clădiri</button>
+
                 <button class="filter-btn" onclick="filterProjects('fundatii', this)">Fundații</button>
+
                 <button class="filter-btn" onclick="filterProjects('trafic', this)">Trafic</button>
+
                 <button class="filter-btn" onclick="filterProjects('mobilitate', this)">Mobilitate urbană</button>
+
                 <button class="filter-btn" onclick="filterProjects('siguranta', this)">Siguranța circulației</button>
+
                 <button class="filter-btn" onclick="filterProjects('ofertare', this)">Ofertare</button>
+
                 <button class="filter-btn" onclick="filterProjects('urbanism', this)">Urbanism</button>
+
                 <button class="filter-btn" onclick="filterProjects('gis', this)">GIS</button>
+
             </div>
+
             
+
             <div class="projects-grid">
 
+
+
                 <div class="project-card" data-tags="licenta drumuri gis mobilitate urbanism" style="border: 2px solid var(--accent-blue); box-shadow: 0 0 15px rgba(0, 168, 255, 0.25);">
+
                     <div class="card-header">
+
                         <div class="project-tags mono">
+
                             <span class="tag" style="background: var(--accent-blue); color: #fff;">Lucrare de Licență</span>
+
                             <span class="tag">Inginerie Civilă</span>
+
                             <span class="tag">Universitatea Tehnică din Cluj-Napoca</span>
+
                             <span class="tag">Infrastructură rutieră</span>
+
                         </div>
+
                         <h3>ANALIZA ȘI PROIECTAREA INFRASTRUCTURII RUTIERE PENTRU UN ANSAMBLU REZIDENȚIAL ÎN CONTEXT URBAN</h3>
-                        <p>În cadrul acestui proiect se realizează infrastructura rutieră necesară pentru un complex rezidențial privat situat în localitatea Florești, județul Cluj, compus din 9 blocuri și 108 apartamente. Totodată, va fi realizat și un studiu asupra UAT Florești, vizând aspecte precum elementele geografice și datele demografice, hidrografia, resursele turistice și riscurile naturale, infrastructura de transport, siguranța circulației, serviciile comunitare de interes public, mobilitatea urbană și perspectivele de dezvoltare locală.</p>
+
+                        <p>În cadrul acestui proiect se realizează infrastructura rutieră necesară pentru un complex rezidențial privat situat în localitatea Florești, județul Cluj, compus din 9 blocuri și 108 apartamente. Totodată, va fi realizat și un studiu asupra UAT Florești, vizând aspecte precum elementele geografice și datele demografice, hidrografia, resursele turistice și riscurile naturale, infrastructura de transport, siguranța circulației, serviciile comunitare de interes public, mobilitatea urbană și perspectivele de dezvoltare locală. Deși lucrările de construcție a blocurilor fac parte din dezvoltarea ansamblului, acestea nu constituie obiectul prezentului proiect, care se concentrează exclusiv pe proiectarea și implementarea infrastructurii rutiere aferente acestuia.
+
+Lucrările incluse în proiect presupun studierea situației existente, proiectarea structurii rutiere, asigurarea scurgerii apelor, realizarea unor prognoze de trafic, managementul deșeurilor, amenajarea parcajelor, pistelor pentru bicicletă și a spațiilor verzi, inclusiv zone de recreere și activități mixte, care vor răspunde nevoilor tuturor categoriilor de vârstă.
+
+</p>
+
                     </div>
+
                     <div class="card-meta mono">
+
                         <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Proiect de diplomă</div></div>
+
                         <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
                     </div>
+
                      <div class="card-actions">
+
                         <a href="#" onclick="openPdfModal(event, 'LIC_PARTE_SCRISĂ.pdf')" class="btn-action mono"><i class="fa-regular fa-file-pdf"></i> Partea scrisă</a>
+
                         <a href="#" onclick="openPdfModal(event, 'LIC_PARTE_DESENATĂ.pdf')" class="btn-action mono" style="color: var(--accent-blue);"><i class="fa-solid fa-pen-ruler"></i> Partea desenată</a>
+
                          <a href="#" onclick="openPdfModal(event, 'LIC_GIS.pdf')" class="btn-action mono"><i class="fa-regular fa-file-pdf"></i> Planșe GIS & Analiză teritorială</a>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="project-card" data-tags="master cercetare drumuri trafic">
-                  <div class="card-header">
-                    <div class="project-tags mono">
-                      <span class="tag">Sisteme WIM</span>
-                      <span class="tag">Studiu de Trafic</span>
-                      <span class="tag">Capacitate de circulație</span>
-                      <span class="tag">Capacitate portantă</span>
-                    </div>
-                    <h3>Evaluarea multicriterială a capacității de circulație și a solicitării structurii rutiere pe coridorul periurban Florești - Cluj-Napoca utilizând înregistrări Weigh-In-Motion (WIM)</h3>
-                    <p>Lucrare de cercetare ce evaluează integrat performanța operațională (nivel de serviciu LOS E/F, raport debit/capacitate 0,87–0,90) și consumul reologic al structurii rutiere (Nc = 4,43–8,32 mil. m.o.s.) pe axa periurbană Florești – Cluj-Napoca.</p>
-                  </div>
-                  <div class="card-meta mono">
-                    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master (Cercetare)</div></div>
-                    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2026</div></div>
-                  </div>
-                  <div class="card-actions">
-                    <a href="#" onclick="openPdfModal(event, 'CERCETARE_2_2.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
-                      <i class="fa-regular fa-file-pdf"></i> Lucrare de cercetare
-                    </a>
-                  </div>
-                </div>
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Sisteme WIM</span>
+
+      <span class="tag">Studiu de Trafic</span>
+
+      <span class="tag">Capacitate de circulație</span>
+
+      <span class="tag">Capacitate portantă</span>
+
+    </div>
+
+    <h3>Evaluarea multicriterială a capacității de circulație și a solicitării structurii rutiere pe coridorul periurban Florești - Cluj-Napoca utilizând înregistrări Weigh-In-Motion (WIM)</h3>
+
+    <p>Lucrare de cercetare ce evaluează integrat performanța operațională (nivel de serviciu LOS E/F, raport debit/capacitate 0,87–0,90) și consumul reologic al structurii rutiere (Nc = 4,43–8,32 mil. m.o.s.) pe axa periurbană Florești – Cluj-Napoca. Studiul izolează o zi etalon din sistemul Weigh-In-Motion (15 mai 2013, 65.152 vehicule) și demonstrează încadrarea drumului în clasa de trafic T0 (Excepțional).</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master (Cercetare)</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2026</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'CERCETARE_2_2.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Lucrare de cercetare
+
+    </a>
+
+  </div>
+
+</div>
+
+
 
                 <div class="project-card" data-tags="master cercetare siguranta drumuri">
-                  <div class="card-header">
-                    <div class="project-tags mono">
-                      <span class="tag">Siguranță Rutieră</span>
-                      <span class="tag">Cost Social &amp; Impact PIB</span>
-                      <span class="tag">Statistici ETSC &amp; INS</span>
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Siguranță Rutieră</span>
+
+      <span class="tag">Cost Social &amp; Impact PIB</span>
+
+      <span class="tag">Statistici ETSC &amp; INS</span>
+
+    </div>
+
+    <h3>Analiza multicriterială a siguranței rutiere în România – Indicatori statistici, Impact economic și Strategii de diminuare a riscului</h3>
+
+    <p>Lucrare de cercetare ce examinează integrat dinamica accidentelor rutiere în România în raport cu politicile europene (Safe System, Vision Zero). Studiul evaluează costul social al deceselor rutiere (2,85 mld. €/an în 2024, reprezentând ~0,81% din PIB), analizează repartiția teritorială și cauzalitatea pe baza datelor INS și ETSC (2019–2025) și propune măsuri prioritare din Strategia Națională 2022–2030 (securizarea trecerilor de pietoni, profiluri 2+1, radare fixe/sancționare automată).</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master (Cercetare)</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2026</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'CERCETARE_3.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Lucrare de cercetare
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+                <div class="project-card" data-tags="master cercetare mobilitate trafic">
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Poluare Fonică</span>
+
+      <span class="tag">Ingineria Transporturilor</span>
+
+      <span class="tag">Mediu Urban</span>
+
+    </div>
+
+    <h3>Evaluarea impactului poluării fonice generate de transport în mediul urban</h3>
+
+    <p>Lucrare de cercetare axată pe analiza expunerii populației la zgomotul din transport (rutier, feroviar, aerian), evaluarea efectelor asupra sănătății publice (indicatori DALYs, OMS/EEA) și identificarea măsurilor tehnice, de trafic și urbanistice pentru atenuarea zgomotului.</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master (Cercetare)</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2026</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'CERCETARE_1.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Lucrare de cercetare
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+                <div class="project-card" data-tags="master drumuri">
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Investigații complexe</span>
+
+      <span class="tag">CD155-2001</span>
+
+      <span class="tag">Drumuri</span>
+
+    </div>
+
+    <h3>Investigații complexe asupra stării tehnice a drumurilor</h3>
+
+    <p>Evaluare tehnică pe un sector experimental (str. Sub Cetate, Florești) privind capacitatea portantă (deflectometru Benkelman), indicele de degradare structurală (ID), rugozitatea (SRT/HS), planeitatea (IRI) și auditul semnalizării rutiere.</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'INVESTIGATII_DRUMURI_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Proiect investigație rutieră
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+                <div class="project-card" data-tags="master trafic">
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Studiu de Trafic</span>
+
+      <span class="tag">Sisteme WIM</span>
+
+      <span class="tag">Capacitate de Circulație</span>
+
+        <span class="tag">Sisteme Inteligente în Transporturi</span>
+
+    </div>
+
+    <h3>Analiza capacității de circulație pe baza datelor Weigh-In-Motion (WIM)</h3>
+
+    <p>Determinarea parametrilor de trafic (K, D, Fv), a debitului orar de calcul (Qcd) și a raportului debit/capacitate pe tronsonul Cluj-Napoca - Florești (4 benzi), utilizând date de monitorizare din stații Weigh-In-Motion (WIM).</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'SIT1.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Studiu de Trafic WIM
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+                <div class="project-card" data-tags="master drumuri trafic">
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Studiu de Trafic</span>
+
+      <span class="tag">Sisteme WIM</span>
+
+      <span class="tag">Capacitate Portantă</span>
+
+        <span class="tag">Sisteme Inteligente în Transporturi</span>
+
+    </div>
+
+    <h3>Analiza capacității portante pe baza datelor Weigh-In-Motion (WIM)</h3>
+
+    <p>Determinarea traficului de calcul în osii etalon pe o perioadă de perspectivă de 10–15 ani, a coeficientului de repartiție transversală și încadrarea în clasa de trafic a tronsonului Cluj-Napoca - Florești (4 benzi), utilizând date de monitorizare din stații Weigh-In-Motion (WIM).</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'SIT3.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Studiu de trafic WIM
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+                <div class="project-card" data-tags="master poduri ofertare drumuri">
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Costuri transport</span>
+
+      <span class="tag">Devize &amp; Lista C9</span>
+
+      <span class="tag">Sisteme Inteligente în Transporturi</span>
+
+    </div>
+
+    <h3>Analiza costului de transport și întocmirea Listei C9 pentru obiectivul „Reabilitare Pod Nod-N”</h3>
+
+    <p>Studiu comparativ al furnizorilor de materiale (Holcim, Romcim, AlbaStone) și calculul tarifelor de transport rutier (distanță/timp), cu determinarea variației în funcție de viteză și salarii, aplicat pe devizul C9 pentru reabilitarea Nodului N (Cluj-Napoca – Florești).</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'SIT2.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Proiect Costuri &amp; Lista C9
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+        <div class="project-card" data-tags="master mobilitate trafic">
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Senzori Mobili GPS</span>
+
+      <span class="tag">Vehicule de Intervenție</span>
+
+      <span class="tag">Mobilitate Urbană</span>
+
+    </div>
+
+    <h3>Evaluarea indicilor de mobilitate urbană și a timpilor de deplasare ai vehiculelor de intervenție pe baza datelor GPS</h3>
+
+    <p>Utilizarea datelor telematice de flotă (Track GPS AROBS) pentru evaluarea indicilor de mobilitate urbană (fluență, densitate în exploatare, întârzieri DDc/DDp) și determinarea timpilor de răspuns ai vehiculelor de urgență pe coridorul Clinicilor – Horea din Cluj-Napoca.</p>
+
+  </div> <!-- Tagul de închidere care lipsea a fost corectat -->
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'SIT2.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Proiect Mobilitate &amp; Vehicule de Intervenție
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+                    <div class="project-card" data-tags="master trafic mobilitate">
+
+  <div class="card-header">
+
+    <div class="project-tags mono">
+
+      <span class="tag">Simulare PTV Vissim</span>
+
+      <span class="tag">Nivel de Serviciu (LOS)</span>
+
+      <span class="tag">Semaforizare &amp; Capacitate</span>
+
+    </div>
+
+    <h3>Studiu de optimizare a capacității de circulație și semaforizare a intersecției Str. Horea – Str. Crișan din Cluj-Napoca</h3>
+
+    <p>Analiză comparativă în PTV Vissim între varianta nesemaforizată și cea semaforizată pentru intersecția Str. Horea – Str. Crișan – Str. Cloșca (Cluj-Napoca). Evaluarea stării de blocaj (LOS F vs. LOS B), optimizarea cozilor de așteptare, reducerea întârzierilor medii cu 78% pe brațul secundar și analiza emisiilor poluante.</p>
+
+  </div>
+
+  <div class="card-meta mono">
+
+    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
+
+    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+  </div>
+
+  <div class="card-actions">
+
+    <a href="#" onclick="openPdfModal(event, 'SIT5.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+      <i class="fa-regular fa-file-pdf"></i> Studiu Trafic Intersecție Vissim
+
+    </a>
+
+  </div>
+
+</div>
+
+
+
+                <!-- Proiect Master -->
+
+                <div class="project-card" data-tags="master cercetare trafic drumuri mobilitate">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">PTV Vissim</span>
+
+                            <span class="tag">Civil Site Design</span>
+
+                            <span class="tag">Trafic WIM</span>
+
+                        </div>
+
+                        <h3>Optimizare Coridor Florești - Cluj-Napoca (Proiect Cercetare)</h3>
+
+                        <p>Micro-simulare și analiză a datelor Weigh-in-Motion (WIM) pentru coridorul Florești. Modelare comparativă pentru reconfigurarea infrastructurii de la 4 la 6 benzi cu alocare dedicată BUS.</p>
+
                     </div>
-                    <h3>Analiza multicriterială a siguranței rutiere în România – Indicatori statistici, Impact economic și Strategii de diminuare a riscului</h3>
-                    <p>Lucrare de cercetare ce examinează integrat dinamica accidentelor rutiere în România în raport cu politicile europene (Safe System, Vision Zero).</p>
-                  </div>
-                  <div class="card-meta mono">
-                    <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master (Cercetare)</div></div>
-                    <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2026</div></div>
-                  </div>
-                  <div class="card-actions">
-                    <a href="#" onclick="openPdfModal(event, 'CERCETARE_3.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
-                      <i class="fa-regular fa-file-pdf"></i> Lucrare de cercetare
-                    </a>
-                  </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Master</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2026</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'nume-fisier-scris.pdf')" class="btn-action mono"><i class="fa-regular fa-file-pdf"></i> Partea scrisă</a>
+
+                        <a href="#" onclick="openPdfModal(event, 'nume-fisier-desenat.pdf')" class="btn-action mono" style="color: var(--accent-blue);"><i class="fa-solid fa-pen-ruler"></i> Partea desenată</a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Proiect Licenta -->
+
+                <div class="project-card" data-tags="licenta cladiri">
+
+    <div class="card-header">
+
+        <div class="project-tags mono">
+
+            <span class="tag">Structuri</span>
+
+            <span class="tag">Beton Armat</span>
+
+            <span class="tag">AutoCAD</span>
+
+        </div>
+
+        <h3>Proiectare hală parter din beton armat</h3>
+
+        <p>Dimensionarea structurală a elementelor din beton armat (placă, grinzi și stâlpi) pentru o clădire cu regim de înălțime parter cu destinație de depozit. Calcul efectuat conform reglementărilor tehnice în vigoare, incluzând evaluarea încărcărilor (AxisVM) și planșele de armare.</p>
+
+    </div>
+
+    <div class="card-meta mono">
+
+        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+    </div>
+
+    <div class="card-actions">
+
+        <a href="#" onclick="openPdfModal(event, 'BAP2_S.pdf')" class="btn-action mono"><i class="fa-regular fa-file-pdf"></i> Partea scrisă</a>
+
+        <a href="#" onclick="openPdfModal(event, 'BAP2_D.pdf')" class="btn-action mono" style="color: var(--accent-blue);"><i class="fa-solid fa-pen-ruler"></i> Partea desenată</a>
+
+    </div>
+
+</div>
+
+
+
+                <div class="project-card" data-tags="licenta drumuri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Proiectare Rutieră</span>
+
+                            <span class="tag">AutoCAD</span>
+
+                            <span class="tag">Infrastructură Urbană</span>
+
+                        </div>
+
+                        <h3>Modernizare str. Mihai Viteazul din Alba Iulia</h3>
+
+                        <p>Proiect tehnic pentru modernizarea străzii Mihai Viteazul din Alba Iulia, convertită la sens unic pentru a integra piste de biciclete și parcări longitudinale. Documentația include planul de situație, profilele longitudinale și transversale, detaliile de execuție și dimensionarea sistemului rutier suplu.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'STRĂZI_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta drumuri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Proiectare Rutieră</span>
+
+                            <span class="tag">AutoCAD</span>
+
+                            <span class="tag">STAS 863/85</span>
+
+                        </div>
+
+                        <h3>Proiectare geometrică tronson de drum</h3>
+
+                        <p>Întocmirea proiectului tehnic și a detaliilor de execuție pentru un tronson de drum. Trasarea s-a realizat pe plan de situație (scara 1:1000, echidistanță curbe de 1m), respectând normativul STAS 863/85 pentru o viteză de proiectare de 40 km/h.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'DRUMURI_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta poduri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Poduri & Pasarele</span>
+
+                            <span class="tag">Structuri Metalice</span>
+
+                            <span class="tag">Oțel-Beton</span>
+
+                        </div>
+
+                        <h3>Proiectare și calcul pasarele pietonale</h3>
+
+                        <p>Proiectul vizează alcătuirea și calculul structural pentru două variante de suprastructură: o pasarelă pietonală pe grinzi cu zăbrele și o pasarelă metalică pe grinzi cu inimă plină, respectiv grinzi compuse oțel-beton.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'PODURI1_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta poduri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Construcții Metalice</span>
+
+                            <span class="tag">Structuri Metalice</span>
+
+                            <span class="tag">Grinzi cu Zăbrele</span>    
+
+                        </div>
+
+                        <h3>Proiectare și calcul pasarelă pietonală cu structură din grinzi cu zăbrele</h3>
+
+                        <p>Dimensionarea și verificarea structurii metalice pentru o pasarelă pietonală pe grinzi cu zăbrele cu deschiderea de 18,00 m și lățimea de 2,30 m. Proiectul cuprinde evaluarea încărcărilor speciale (greutate proprie, aglomerare de persoane 5,00 kN/m², vehicul accidental de întreținere 80+40 kN și acțiunea vântului), alături de dimensionarea elementelor din profile tubulare din oțel S275 (tălpi, montanți, diagonale) și a antretoazelor IPE220. Documentația include memoriul de calcul și piese desenate complete: vedere laterală, vedere plană, secțiune transversală și detalii de secțiune.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'METALICE_S+P.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta tramvai mobilitate drumuri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Infrastructură Feroviară</span>
+
+                            <span class="tag">Transport Urban</span>
+
+                            <span class="tag">AutoCAD</span>
+
+                        </div>
+
+                        <h3>Proiectare traseu de linie de tramvai</h3>
+
+                        <p>Proiectarea tehnică a unui traseu de linie dublă de tramvai integrat în platforma stradală urbană. Documentația cuprinde dimensionarea analitică a suprastructurii rigide la încărcările dinamice ale convoiului de calcul (calculul eforturilor unitare, al modulului de reacție și al grosimilor echivalente de strat), alături de piesele desenate: plan de situație, profil longitudinal și profile transversale curente.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Proiect</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'TRAMVAI_S+P.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Proiect Fundații Izolate -->
+
+                <div class="project-card" data-tags="licenta fundatii">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Fundații</span>
+
+                            <span class="tag">Structuri în Cadre</span>
+
+                            <span class="tag">SR EN 1997-1</span>
+
+                        </div>
+
+                        <h3>Proiectare fundații izolate pentru stâlpii unei structuri în cadre</h3>
+
+                        <p>Dimensionarea și verificarea geotehnică a fundațiilor izolate (rigide și elastice) pentru stâlpii unei structuri în cadre. Documentația include verificările la capacitate portantă și tasare, alături de detaliile de armare și execuție.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'FUNDAȚIE_IZOLATĂ.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Proiect Fundații Continue -->
+
+                <div class="project-card" data-tags="licenta fundatii">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Fundații</span>
+
+                            <span class="tag">Subsol</span>
+
+                            <span class="tag">AutoCAD</span>
+
+                        </div>
+
+                        <h3>Proiectare fundație continuă rigidă</h3>
+
+                        <p>Proiectarea fundațiilor continue sub pereți de subsol conform SR EN 1997-1. Proiectul detaliază etapele tehnologice, planul de săpătură, planul de fundații și detaliile caracteristice de execuție pentru axele principale.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'FUNDAȚIE_CONTINUĂ_RIGIDĂ.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Proiect Zid de Sprijin -->
+
+                <div class="project-card" data-tags="licenta fundatii drumuri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Geotehnică</span>
+
+                            <span class="tag">Zid de Sprijin</span>
+
+                            <span class="tag">Beton Simplu</span>
+
+                        </div>
+
+                        <h3>Proiectare zid de sprijin din beton simplu</h3>
+
+                        <p>Dimensionarea unui zid de sprijin de rambleu din beton simplu. Documentația cuprinde evaluarea împingerilor pământului, verificările de stabilitate la lunecare, răsturnare și capacitate portantă, plus elevațiile și secțiunile transversale.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'ZID_SPRIJIN_BETON_SIMPLU.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta cladiri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Clădiri</span>
+
+                            <span class="tag">Zidărie Portantă</span>
+
+                            <span class="tag">AutoCAD</span>
+
+                        </div>
+
+                        <h3>Proiectare locuință unifamilială S+P+1E</h3>
+
+                        <p>Proiect de arhitectură și structură pentru o locuință unifamilială cu regim de înălțime S+P+1E. Sistemul constructiv este realizat din zidărie portantă confinată cu stâlpișori din beton armat. Documentația tehnică include planurile de arhitectură, planul de fundații, secțiuni, fațade și verificarea gradului de protecție termică a anvelopei.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'CLĂDIRI_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta gis siguranta trafic">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Siguranță Rutieră</span>
+
+                            <span class="tag">ArcGIS</span>
+
+                            <span class="tag">Analiză Spațială</span>
+
+                        </div>
+
+                        <h3>Analiza spațială a accidentelor rutiere - UAT Municipiul Iași</h3>
+
+                        <p>Studiu complex de siguranță rutieră realizat în ArcGIS pentru Municipiul Iași, bazat pe analiza datelor istorice ale accidentelor rutiere din perioada 2015–2019. Proiectul utilizează tehnici avansate de modelare spațială: analiză de densitate (Kernel Density Estimation / Heatmap) și agregare pe rețele hexagonale pentru identificarea zonelor cu risc ridicat (hotspots). Include evaluări statistice privind influența factorilor meteorologici și a stării carosabilului, demonstrând că majoritatea evenimentelor se concentrează în zona centrală în condiții normale de trafic.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'ACCIDENTE_IAȘI_LICENȚĂ_S+P.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Studiu GIS Siguranță Rutieră
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta trafic siguranta">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Ingineria Traficului</span>
+
+                            <span class="tag">Siguranță Rutieră</span>
+
+                            <span class="tag">Analiză Capacitate</span>
+
+                        </div>
+
+                        <h3>Analiza traficului în intersecția str. Cireșilor - str. Ceahlău din Cluj-Napoca</h3>
+
+                        <p>Analiza capacității de circulație și a siguranței rutiere pentru intersecția străzilor Cireșilor și Ceahlău din cartierul Zorilor, Cluj-Napoca. Proiectul evaluează debitele de trafic prin conversia vehiculelor fizice în vehicule etalon, determinând raportul debit-capacitate, rezerva de capacitate și prognoza valorilor de trafic pentru anul 2035.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'TRAFIC_S+P.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Studiu de Trafic
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta urbanism">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Regenerare Urbană</span>
+
+                            <span class="tag">Modelare 3D & Twinmotion</span>
+
+                            <span class="tag">Spații Publice</span>
+
+                            <span class="tag">Ambientare urbană</span>
+
+                        </div>
+
+                        <h3>Regenerare Urbană - Capăt Dacia Iași</h3>
+
+                        <p>Proiect de reconversie funcțională și amenajare peisagistică a fostului capăt de linie de tramvai Dacia din Municipiul Iași într-un spațiu public multifuncțional. Proiectul propune un mini-muzeu în aer liber al tramvaielor istorice ieșene (recondiționate în culorile tricolorului), un teren de fotbal cu pistă perimetrală de alergat, spații de joacă tematice, mobilier urban modern, iluminat LED și toaletă publică accesibilă. Conceptul și animația au fost modelate 3D și randate în Twinmotion, fiind susținute de o analiză de fezabilitate și un calcul estimativ al costurilor.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'AMBIENTARE_2_S+P.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                        <a href="https://drive.google.com/file/d/1v-2cUvFkek_LmWwbthGG6CoGLL0uyS55/view" target="_blank" rel="noopener noreferrer" class="btn-action mono" style="color: #ff4757;">
+
+                            <i class="fa-solid fa-circle-play"></i> Prezentare Video 3D
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta urbanism drumuri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Urbanism & PUG</span>
+
+                            <span class="tag">Dezvoltare Regională</span>
+
+                            <span class="tag">Planificare Teritorială</span>
+
+                            <span class="tag">Ambientare urbană</span>
+
+                        </div>
+
+                        <h3>Reactualizare PUG - UAT Trifești, Jud. Iași</h3>
+
+                        <p>Studiu de fundamentare pentru reactualizarea Planului Urbanistic General (P.U.G.) al comunei Trifești, județul Iași. Proiectul cuprinde analiza complexă a situației existente (dinamica demografică, fondul construit, vulnerabilități la riscuri naturale și echipare tehnico-edilitară), alături de propuneri strategice de dezvoltare: extinderea intravilanului, profilarea transversală modernă a axului DN24C (piste de biciclete și trotuare), reorganizarea funcțională a comunei și stabilirea regulamentului local de urbanism (regim de înălțime, colectare selectivă).</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'AMBIENTARE_1_S+P.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta ofertare cladiri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Management</span>
+
+                            <span class="tag">InterSOFT Deviz</span>
+
+                            <span class="tag">Ofertare</span>
+
+                        </div>
+
+                        <h3>Deviz și antemăsurătoare locuință unifamilială P</h3>
+
+                        <p>Întocmirea documentației economice pentru executarea unei clădiri de locuit cu regim de înălțime parter. Proiectul include extrasele de antemăsurătoare detaliate pentru infrastructură și suprastructură, alături de listele cuprinzând consumurile de resurse materiale, forță de muncă, utilaje și transport.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'MANAGEMENT_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta drumuri siguranta">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Iluminat Urban</span>
+
+                            <span class="tag">DIALux</span>
+
+                            <span class="tag">Caiet de Sarcini</span>
+
+                        </div>
+
+                        <h3>Modernizare iluminat public - Str. Observatorului din Cluj-Napoca</h3>
+
+                        <p>Elaborarea caietului de sarcini pentru modernizarea infrastructurii de iluminat stradal cu tehnologie LED în Municipiul Cluj-Napoca. Proiectul include auditul și simularea fotometrică realizată în DIALux, demonstrând îndeplinirea cerințelor luminotehnice pentru clasa de iluminat M4.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'ILUMINAT_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta urbanism gis">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Infrastructură Urbană</span>
+
+                            <span class="tag">Managamentul deșeurilor</span>
+
+                            <span class="tag">GIS</span>
+
+                        </div>
+
+                        <h3>Dimensionarea sistemului de gestionare a deșeurilor în microzona urbană ”Dacia” a municipiului Iași</h3>
+
+                        <p>Dimensionarea și optimizarea sistemului de gestionare a deșeurilor municipale pentru microzona rezidențială Dacia. Proiectul analizează tranziția de la colectarea în amestec la un sistem de colectare selectivă la sursă, incluzând calcule demografice, dimensionarea necesarului de recipienți (stradali și rezidențiali), evaluarea flotei de transport și cartografierea traseelor optime de colectare.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2024</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'MD_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Partea scrisă + Partea desenată
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta drumuri ofertare urbanism">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Politici & Strategii Urbane</span>
+
+                            <span class="tag">Fonduri Europene (FEADR)</span>
+
+                            <span class="tag">Infrastructură Rutieră</span>
+
+                            <span class="tag">Urbanism</span>
+
+                            <span class="tag">Investiții Publice</span>
+
+                        </div>
+
+                        <h3>Atragere fonduri europene pentru reabilitarea infrastructurii rutiere</h3>
+
+                        <p>Elaborarea completă a dosarului de finanțare nerambursabilă (FEADR Sub-măsura 7.2) pentru modernizarea integrată a infrastructurii rutiere urbane/rurale. Proiectul cuprinde analiza diagnostic socio-economică și teritorială a municipiului pentru fundamentarea oportunității (analize GIS, demografie, analiză SWOT, matrice logică), reconfigurarea profilului transversal (piste de biciclete, trotuare, iluminat LED) și întocmirea devizului general (HG 28/2008), devizelor pe obiect, diagramei Gantt și indicatorilor de monitorizare.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'POLITICI_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Cerere de Finanțare + Memoriu Tehnic
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta cladiri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Evaluare Imobiliară</span>
+
+                            <span class="tag">Analiză de Piață</span>
+
+                        </div>
+
+                        <h3>Raport de evaluare imobiliară</h3>
+
+                        <p>Raport de evaluare imobiliară elaborat conform standardelor ANEVAR pentru un apartament cu 2 camere (51,42 mp utili + 7,32 mp balcon), situat la etajul 12 al blocului turn P+24E de pe Calea Florești nr. 139, Cluj-Napoca. Lucrarea include analiza pieței imobiliare locale, inspectarea fizică a proprietății, identificarea comparabilelor și estimarea valorii de piață prin metoda comparației directe (analiză pe perechi de date) și metoda capitalizării venitului din chirie. Documentația este însoțită de extrasul CF, releveul proprietății și galeria foto de inspecție.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'IMOBILIARE_S+D.pdf')" class="btn-action mono" style="color: var(--accent-blue);">
+
+                            <i class="fa-regular fa-file-pdf"></i> Raport de Evaluare + Anexe
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card" data-tags="licenta mobilitate trafic drumuri">
+
+                    <div class="card-header">
+
+                        <div class="project-tags mono">
+
+                            <span class="tag">Infrastructură Urbană</span>
+
+                            <span class="tag">AutoCAD</span>
+
+                        </div>
+
+                        <h3>Infrastructură și Transport Public Local - Florești</h3>
+
+                        <p>Proiect de licență axat pe optimizarea tramei stradale, amenajarea intersecțiilor și propuneri de sistematizare pentru eficientizarea rețelei de transport public din comuna Florești.</p>
+
+                    </div>
+
+                    <div class="card-meta mono">
+
+                        <div class="meta-item"><div class="meta-label">Tip</div><div class="meta-value">Licență</div></div>
+
+                        <div class="meta-item"><div class="meta-label">An</div><div class="meta-value">2025</div></div>
+
+                    </div>
+
+                    <div class="card-actions">
+
+                        <a href="#" onclick="openPdfModal(event, 'nume-fisier-scris.pdf')" class="btn-action mono"><i class="fa-regular fa-file-pdf"></i> Partea scrisă</a>
+
+                        <a href="#" onclick="openPdfModal(event, 'nume-fisier-desenat.pdf')" class="btn-action mono" style="color: var(--accent-blue);"><i class="fa-solid fa-pen-ruler"></i> Partea desenată</a>
+
+                    </div>
+
                 </div>
 
             </div>
+
         </section>
+
+
 
         <section id="competente">
-            <div class="section-header">
-                <span class="section-num mono">02 /</span>
-                <h2 class="section-title">Competențe tehnice și software</h2>
-            </div>
-            
-            <table class="skills-table">
-                <tbody>
-                    <tr>
-                        <th class="mono">Proiectare CAD & Modelare 3D</th>
-                        <td>
-                            <ul style="padding-left: 20px; margin: 0;">
-                                <li><strong>AutoCAD</strong></li>
-                                <li><strong>Civil 3D</strong></li>
-                                <li><strong>Civil Site Design</strong></li>
-                                <li><strong>Advanced Road Design</strong> (ARD)</li>
-                                <li><strong>TopoLT</strong></li>
-                                <li><strong>SketchUp</strong></li>
-                                <li><strong>Twinmotion</strong></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="mono">Calcul Structural & Matematic</th>
-                        <td>
-                            <ul style="padding-left: 20px; margin: 0;">
-                                <li><strong>AxisVM</strong></li>
-                                <li><strong>SAP2000</strong></li>
-                                <li><strong>MathCAD</strong></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="mono">Ingineria Traficului</th>
-                        <td>
-                            <ul style="padding-left: 20px; margin: 0;">
-                                <li><strong>PTV Vissim</strong> (microsimulare)</li>
-                                <li><strong>PTV Visum</strong> (macrosimulare)</li>
-                                <li><strong>PTV Viswalk</strong> (microsimulare + analiza fluxurilor de pietoni)</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="mono">Analiză Spațială (GIS)</th>
-                        <td>
-                            <ul style="padding-left: 20px; margin: 0;">
-                                <li><strong>QGIS</strong></li>
-                                <li><strong>ArcGIS Pro</strong></li>
-                                <li><strong>ArcGIS Online</strong></li>
-                                <li><strong>ArcGIS Survey123</strong></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="mono">Devize & Ofertare</th>
-                        <td>
-                            <ul style="padding-left: 20px; margin: 0;">
-                                <li><strong>InterSOFT Deviz Profesional</strong></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="mono">Iluminat Urban</th>
-                        <td>
-                            <ul style="padding-left: 20px; margin: 0;">
-                                <li><strong>DiaLux EVO</strong></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+
+    <div class="section-header">
+
+        <span class="section-num mono">02 /</span>
+
+        <h2 class="section-title">Competențe tehnice și software</h2>
+
+    </div>
+
+    
+
+    <table class="skills-table">
+
+        <tbody>
+
+            <tr>
+
+                <th class="mono">Proiectare CAD & Modelare 3D</th>
+
+                <td>
+
+                    <ul style="padding-left: 20px; margin: 0;">
+
+                        <li><strong>AutoCAD</strong></li>
+
+                        <li><strong>Civil 3D</strong></li>
+
+                        <li><strong>Civil Site Design</strong></li>
+
+                        <li><strong>Advanced Road Design</strong> (ARD)</li>
+
+                        <li><strong>TopoLT</strong></li>
+
+                        <li><strong>SketchUp</strong></li>
+
+                        <li><strong>Twinmotion</strong></li>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th class="mono">Calcul Structural & Matematic</th>
+
+                <td>
+
+                    <ul style="padding-left: 20px; margin: 0;">
+
+                        <li><strong>AxisVM</strong></li>
+
+                        <li><strong>SAP2000</strong></li>
+
+                        <li><strong>MathCAD</strong></li>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th class="mono">Ingineria Traficului</th>
+
+                <td>
+
+                    <ul style="padding-left: 20px; margin: 0;">
+
+                        <li><strong>PTV Vissim</strong> (microsimulare)</li>
+
+                        <li><strong>PTV Visum</strong> (macrosimulare)</li>
+
+                        <li><strong>PTV Viswalk</strong> (microsimulare + analiza fluxurilor de pietoni)</li>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th class="mono">Analiză Spațială (GIS)</th>
+
+                <td>
+
+                    <ul style="padding-left: 20px; margin: 0;">
+
+                        <li><strong>QGIS</strong></li>
+
+                        <li><strong>ArcGIS Pro</strong></li>
+
+                        <li><strong>ArcGIS Online</strong></li>
+
+                        <li><strong>ArcGIS Survey123</strong></li>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th class="mono">Devize & Ofertare</th>
+
+                <td>
+
+                    <ul style="padding-left: 20px; margin: 0;">
+
+                        <li><strong>InterSOFT Deviz Profesional</strong></li>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th class="mono">Iluminat Urban</th>
+
+                <td>
+
+                    <ul style="padding-left: 20px; margin: 0;">
+
+                        <li><strong>DiaLux EVO</strong></li>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th class="mono">Software General</th>
+
+                <td>
+
+                    <ul style="padding-left: 20px; margin: 0;">
+
+                        <li><strong>Suita Microsoft Office</strong> (Word, Excel - Analiză date)</li>
+
+                    </ul>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
 
         <section id="contact">
+
             <div class="section-header">
+
                 <span class="section-num mono">03 /</span>
+
                 <h2 class="section-title">Contact</h2>
+
             </div>
+
             
+
             <div class="contact-grid">
+
                 <div class="contact-block">
+
                     <span class="contact-label mono">E-mail</span>
-                    <a href="mailto:alexandruharapciuc@gmail.com" class="contact-value">alexandruharapciuc@gmail.com</a>
+
+                    <a href="mailto:alexandru.harapciuc@yahoo.com" class="contact-value">alexandruharapciuc@gmail.com</a>
+
                 </div>
+
                 <div class="contact-block">
+
                     <span class="contact-label mono">Locație</span>
+
                     <span class="contact-value">Municipiul Iași, Județul Iași</span>
+
                 </div>
+
                 <div class="contact-block">
+
                     <span class="contact-label mono">Disponibilitate</span>
+
                     <span class="contact-value">Program complet (8h)</span>
+
                 </div>
+
                 <div class="contact-block">
+
                     <span class="contact-label mono">LinkedIn</span>
+
                     <a href="#" class="contact-value">/in/alexandru-harapciuc</a>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <footer>
+
             <span class="mono">Bernard - Alexandru Harapciuc &copy; 2026.</span>
+
         </footer>
+
     </div>
+
+
 
     <!-- Fereastră plutitoare pentru PDF -->
+
     <div id="pdfModal" class="modal">
+
         <div class="modal-content">
+
             <span class="close-btn" onclick="closePdfModal()">&times;</span>
+
             <iframe id="pdfViewer" src="" width="100%" height="100%" style="border: none;"></iframe>
+
         </div>
+
     </div>
 
+
+
     <script>
+
         function openPdfModal(event, urlPdf) {
+
             event.preventDefault(); 
+
             document.getElementById('pdfViewer').src = urlPdf;
+
             document.getElementById('pdfModal').style.display = 'block';
+
         }
+
+
 
         function closePdfModal() {
+
             document.getElementById('pdfModal').style.display = 'none';
+
             document.getElementById('pdfViewer').src = ''; 
+
         }
+
+
 
         window.onclick = function(event) {
+
             let modal = document.getElementById('pdfModal');
+
             if (event.target == modal) {
+
                 closePdfModal();
+
             }
+
         }
+
         
+
         // FUNCȚIA DE FILTRARE
+
         function filterProjects(category, btnElement) {
+
+            // 1. Schimbă butonul activ
+
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+
             btnElement.classList.add('active');
 
+
+
+            // 2. Filtrează cardurile pe baza cuvintelor din data-tags
+
             const cards = document.querySelectorAll('.project-card');
+
             cards.forEach(card => {
+
                 const tags = (card.getAttribute('data-tags') || '').split(' ');
+
                 
+
                 if (category === 'all' || tags.includes(category)) {
+
                     card.style.display = 'flex';
+
                 } else {
+
                     card.style.display = 'none';
+
                 }
+
             });
+
         }
+
     </script>
 
-    <!-- BLOC INTEGRAT DE PROTECȚIE (ANTI COPY-PASTE & INSPECT) -->
-    <style>
-        *, *::before, *::after {
-            -webkit-user-select: none !important;
-            -moz-user-select: none !important;
-            -ms-user-select: none !important;
-            user-select: none !important;
-        }
 
-        img, iframe, embed, object, canvas {
-            -webkit-user-drag: none !important;
-            user-drag: none !important;
-            pointer-events: auto;
-        }
-    </style>
 
-    <script>
-        (function() {
-            'use strict';
+    <!-- ======================================================= -->
 
-            document.addEventListener('contextmenu', function(e) {
+<!-- BLOC INTEGRAT DE PROTECȚIE (ANTI COPY-PASTE & INSPECT) -->
+
+<!-- Se plasează înainte de eticheta </body>                -->
+
+<!-- ======================================================= -->
+
+
+
+<!-- 1. STILURI CSS - Protecție vizuală & Selecție -->
+
+<style>
+
+    /* Blochează selectarea textului pe toată pagina */
+
+    *, *::before, *::after {
+
+        -webkit-user-select: none !important;
+
+        -moz-user-select: none !important;
+
+        -ms-user-select: none !important;
+
+        user-select: none !important;
+
+    }
+
+
+
+    /* Previne tragerea imaginilor, cadrelor și PDF-urilor */
+
+    img, iframe, embed, object, canvas {
+
+        -webkit-user-drag: none !important;
+
+        user-drag: none !important;
+
+        pointer-events: auto;
+
+    }
+
+</style>
+
+
+
+<!-- 2. SCRIPT JS - Blochează Click Dreapta, Taste & Clipboard -->
+
+<script>
+
+    (function() {
+
+        'use strict';
+
+
+
+        // Blochează meniul de Click Dreapta (contextmenu)
+
+        document.addEventListener('contextmenu', function(e) {
+
+            e.preventDefault();
+
+            return false;
+
+        }, false);
+
+
+
+        // Blochează acțiunile de Clipboard & Drag
+
+        document.addEventListener('copy', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('cut', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); }, false);
+
+
+
+        // Blochează scurtăturile de tastatură critice
+
+        document.addEventListener('keydown', function(e) {
+
+            // F12 (Developer Tools)
+
+            if (e.keyCode === 123) {
+
                 e.preventDefault();
+
                 return false;
-            }, false);
 
-            document.addEventListener('copy', function(e) { e.preventDefault(); }, false);
-            document.addEventListener('cut', function(e) { e.preventDefault(); }, false);
-            document.addEventListener('dragstart', function(e) { e.preventDefault(); }, false);
+            }
 
-            document.addEventListener('keydown', function(e) {
-                if (e.keyCode === 123) {
+
+
+            if (e.ctrlKey || e.metaKey) {
+
+                // Ctrl + U (Vizualizare Sursă Pagină)
+
+                if (e.keyCode === 85) { e.preventDefault(); return false; }
+
+                // Ctrl + S (Salvare Pagină Web)
+
+                if (e.keyCode === 83) { e.preventDefault(); return false; }
+
+                // Ctrl + P (Imprimare / Print)
+
+                if (e.keyCode === 80) { e.preventDefault(); return false; }
+
+                // Ctrl + C (Copiere)
+
+                if (e.keyCode === 67) { e.preventDefault(); return false; }
+
+                // Ctrl + X (Tăiere)
+
+                if (e.keyCode === 88) { e.preventDefault(); return false; }
+
+                // Ctrl + A (Selectare Tot)
+
+                if (e.keyCode === 65) { e.preventDefault(); return false; }
+
+
+
+                // Ctrl + Shift + I / J / C (Inspect Element & Console)
+
+                if (e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+
                     e.preventDefault();
+
                     return false;
+
                 }
 
-                if (e.ctrlKey || e.metaKey) {
-                    if (e.keyCode === 85) { e.preventDefault(); return false; }
-                    if (e.keyCode === 83) { e.preventDefault(); return false; }
-                    if (e.keyCode === 80) { e.preventDefault(); return false; }
-                    if (e.keyCode === 67) { e.preventDefault(); return false; }
-                    if (e.keyCode === 88) { e.preventDefault(); return false; }
-                    if (e.keyCode === 65) { e.preventDefault(); return false; }
+            }
 
-                    if (e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
-                        e.preventDefault();
-                        return false;
-                    }
-                }
-            }, false);
-        })();
-    </script>
+        }, false);
+
+    })();
+
+</script>
+
 </body>
-</html>
+
+</html> 
