@@ -44,25 +44,21 @@
 
 
 
-   /* 1. Fundalul curat și clar, fără blur pe pagină */
-
-body {
+  body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color); 
     color: var(--text-main);
     line-height: 1.6;
     
-    /* SETĂRILE PENTRU NOUA IMAGINE DE FUNDAL */
+    /* Imaginea de fundal curată, clară, fără blur chinuitor */
     background-image: url('FUNDAL.png'); 
     background-size: cover; 
-    background-position: center top; 
+    background-position: center center; 
     background-repeat: no-repeat; 
-    background-attachment: fixed; 
-} /* <-- Aici se închide corect body */
-
-/* Clasa .mono stă separat, în afara lui body */
-.mono { 
-    font-family: 'JetBrains Mono', monospace; 
+    background-attachment: fixed;
+    
+    /* Opțional: o ușoară tentă albă peste fundal ca să-l mai „stingem” din intensitate dacă e prea strident */
+    background-color: rgba(248, 250, 252, 0.6);
+    background-blend-mode: overlay;
 }
 
 .container { 
@@ -70,52 +66,34 @@ body {
     width: 92%; 
     margin: 0 auto; 
     padding: 0 40px; 
-    background: rgba(255, 255, 255, 0.82); 
-    backdrop-filter: blur(12px); 
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+    
+    /* Un alb fin semi-transparent (0.80) ca să se vadă discret fundalul */
+    background: rgba(255, 255, 255, 0.80); 
+    
+    /* Un blur foarte fin de 5px pentru un efect elegant de sticlă, deloc încărcat */
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
-
 
         /* Navigație minimală */
 
 nav {
-
     display: flex; 
-
     justify-content: space-between; 
-
     align-items: center;
-
-    
-
-    /* Preluăm exact aceleși dimensiuni ca și dreptunghiul alb (.container) */
-
     max-width: 1280px;
-
     width: 92%;
-
-    margin: 0 auto; /* Îl centrează perfect pe ecran */
-
-    
-
-    /* Adăugăm un padding de 40px strict pe interiorul lui, egal cu cel din container */
-
+    margin: 0 auto;
     padding: 25px 40px; 
-
-    
-
     border-bottom: 1px solid var(--border-light);
-
     position: sticky; 
-
     top: 0; 
-
-    background: rgba(255, 255, 255, 0.95); 
-
-    backdrop-filter: blur(10px); 
-
+    background: rgba(255, 255, 255, 0.80); /* Același alb fin */
+    backdrop-filter: blur(5px); /* Același blur discret */
+    -webkit-backdrop-filter: blur(5px);
     z-index: 100;
-
 }
 
         .logo { font-weight: 600; font-size: 1.1rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
